@@ -11,91 +11,69 @@
       --cucine-red: #e63920;
       --closet-burgundy: #7a151b;
       --bano-blue: #1c355e;
+      --bg-dark: #050505;
+      --bg-light: #0a0a0a;
     }
 
     body, html {
-      margin: 0;
-      padding: 0;
-      background-color: #050505;
+      margin: 0; padding: 0;
+      background-color: var(--bg-dark);
       color: white;
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
+    /* --- BARRA DE NAVEGACIÓN --- */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 25px; box-sizing: border-box;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: lowercase;}
+    .nav-logo span { color: var(--cucine-red); }
+    .menu-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
     /* --- HERO SECTION --- */
     .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+      height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      position: relative; overflow: hidden;
     }
     .hero-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.25;
-      z-index: 0;
-      animation: slowZoom 20s infinite alternate;
+      background-size: cover; background-position: center;
+      opacity: 0.25; z-index: 0; animation: slowZoom 20s infinite alternate;
     }
-    @keyframes slowZoom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
-    .hero-content {
-      z-index: 1;
-      text-align: center;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+    
+    .hero-content { z-index: 1; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    
     .header-marca p {
-      font-weight: 300;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      color: #d4af37;
-      margin-bottom: 30px;
+      font-weight: 300; letter-spacing: 8px; text-transform: uppercase;
+      font-size: 0.85rem; color: #d4af37; margin-bottom: 30px;
     }
 
     /* GRID DEL LOGO */
     .letrero-interactivo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      width: 90vw;
-      max-width: 450px;
-      margin-bottom: 50px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+      width: 90vw; max-width: 450px; margin-bottom: 50px;
     }
     .cuadro {
-      height: 160px;
-      border-radius: 6px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      height: 160px; border-radius: 6px; position: relative; overflow: hidden;
+      cursor: pointer; display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: transform 0.4s ease;
       border: 1px solid rgba(255,255,255,0.05);
     }
     .cuadro::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-size: cover;
-      background-position: center;
-      transition: all 0.5s ease;
-      z-index: 1;
-      opacity: 0; 
-      filter: grayscale(100%);
+      content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover; background-position: center; transition: all 0.5s ease;
+      z-index: 1; opacity: 0; filter: grayscale(100%);
     }
     .caja-art { background-color: var(--art-dark); }
     .caja-cucine { background-color: var(--cucine-red); }
@@ -107,92 +85,52 @@
     .caja-closet::before { background-image: url('https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=80&w=800&auto=format&fit=crop'); }
     .caja-bano::before { background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop'); }
 
-    .cuadro:hover, .cuadro:active {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.9);
-    }
-    .cuadro:hover::before, .cuadro:active::before {
-      opacity: 0.5; filter: grayscale(0%); transform: scale(1.1);
-    }
+    .cuadro:hover, .cuadro:active { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.9); }
+    .cuadro:hover::before, .cuadro:active::before { opacity: 0.5; filter: grayscale(0%); transform: scale(1.1); }
+    
     .cuadro h2 {
-      position: relative;
-      z-index: 2;
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin: 0;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+      position: relative; z-index: 2; font-size: 2.2rem; font-weight: 700;
+      letter-spacing: 1px; margin: 0; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
       transition: letter-spacing 0.3s ease;
     }
     .cuadro:hover h2, .cuadro:active h2 { letter-spacing: 3px; }
 
+    /* INDICADOR DE SCROLL */
     .scroll-indicator {
-      position: absolute;
-      bottom: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      opacity: 0.7;
-      animation: bounce 2s infinite;
+      position: absolute; bottom: 30px; display: flex; flex-direction: column;
+      align-items: center; opacity: 0.7; animation: bounce 2s infinite;
     }
-    .scroll-indicator span {
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
+    .scroll-indicator span { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
     .scroll-indicator svg { width: 20px; height: 20px; fill: white; }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-      40% {transform: translateY(-10px);}
-      60% {transform: translateY(-5px);}
-    }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-    /* --- INFO SECTION --- */
-    .info-section {
-      padding: 80px 20px;
-      background: #0a0a0a;
-      text-align: center;
-    }
-    .info-section h3 { font-size: 1.8rem; font-weight: 300; margin-bottom: 20px; }
-    .info-section h3 strong { font-weight: 700; color: var(--cucine-red); }
-    .info-section p {
-      font-weight: 300; color: #a3a3a3; line-height: 1.8; max-width: 600px;
-      margin: 0 auto 40px auto; font-size: 1rem;
-    }
+    /* --- GLOBALES SECCIONES --- */
+    .section { padding: 80px 20px; text-align: center; }
+    .bg-dark { background: var(--bg-dark); }
+    .bg-light { background: var(--bg-light); }
+    .section-title { font-size: 2rem; font-weight: 300; margin-bottom: 40px; letter-spacing: 2px; }
+    .section-title strong { font-weight: 700; color: var(--cucine-red); }
+
+    /* --- INFO & NOSOTROS --- */
+    .text-box { max-width: 700px; margin: 0 auto; }
+    .text-box p { font-weight: 300; color: #a3a3a3; line-height: 1.8; margin-bottom: 30px; font-size: 1.05rem; }
+    .tag { display: inline-block; padding: 5px 15px; border: 1px solid var(--cucine-red); color: var(--cucine-red); border-radius: 20px; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 20px; }
+    
     .btn-cotizar {
-      display: inline-block;
-      padding: 15px 40px; background-color: var(--cucine-red); color: white;
-      text-decoration: none; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; border-radius: 30px; font-size: 0.9rem;
-      transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4);
+      display: inline-block; padding: 15px 40px; background-color: var(--cucine-red); color: white;
+      text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      border-radius: 30px; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4);
     }
     .btn-cotizar:hover { background-color: #ff4a30; transform: translateY(-3px); }
 
     /* --- LÍNEAS DE DISEÑO --- */
-    .lineas-section {
-      padding: 60px 20px 80px 20px;
-      background: #050505;
-      text-align: center;
-    }
-    .section-title {
-      font-size: 2rem; font-weight: 300; margin-bottom: 50px; letter-spacing: 2px;
-    }
-    .lineas-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px; max-width: 1000px; margin: 0 auto;
-    }
+    .lineas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
     .linea-card {
       position: relative; height: 300px; border-radius: 8px; overflow: hidden;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 25px; text-align: left; background-size: cover; background-position: center;
-      transition: transform 0.4s ease; border: 1px solid rgba(255,255,255,0.1);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; text-align: left;
+      background-size: cover; background-position: center; transition: transform 0.4s ease; border: 1px solid rgba(255,255,255,0.1);
     }
-    .linea-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
-      z-index: 1;
-    }
+    .linea-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); z-index: 1; }
     .linea-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
     .linea-card h4, .linea-card p { position: relative; z-index: 2; margin: 0; }
     .linea-card h4 { font-size: 1.5rem; color: white; margin-bottom: 10px; letter-spacing: 1px; }
@@ -203,59 +141,47 @@
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
 
+    /* --- BLOG TENDENCIAS --- */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; text-align: left; }
+    .blog-card { background: #111; border-radius: 8px; overflow: hidden; border: 1px solid #222; transition: border-color 0.3s; }
+    .blog-card:hover { border-color: #444; }
+    .blog-img { height: 200px; background-size: cover; background-position: center; }
+    .blog-content { padding: 25px; }
+    .blog-content h4 { margin: 0 0 15px 0; font-size: 1.2rem; }
+    .blog-content p { color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0 0 15px 0; font-weight: 300; }
+    .blog-content a { color: var(--cucine-red); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
+
     /* --- ALIADOS --- */
-    .aliados-section {
-      padding: 60px 20px;
-      background: #0a0a0a;
-      text-align: center;
-    }
-    .aliados-section p { color: #888; font-weight: 300; margin-bottom: 30px; letter-spacing: 1px;}
-    .aliados-grid {
-      display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;
-    }
-    .aliado-logo {
-      font-size: 1.8rem; font-weight: 700; color: #444; letter-spacing: 2px;
-      transition: color 0.3s ease; cursor: pointer;
-    }
+    .aliados-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;}
+    .aliado-logo { font-size: 1.8rem; font-weight: 700; color: #444; letter-spacing: 2px; transition: color 0.3s ease; cursor: pointer; }
     .aliado-logo:hover { color: white; }
 
     /* --- SUCURSALES --- */
-    .sucursales-section {
-      padding: 80px 20px;
-      background: #050505;
-      text-align: center;
-    }
-    .sucursales-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; max-width: 1200px; margin: 0 auto;
-    }
-    .sucursal-card {
-      background: #111; border: 1px solid #222; border-radius: 8px;
-      padding: 30px 20px; text-align: left; transition: border-color 0.3s ease;
-    }
+    .sucursales-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .sucursal-card { background: #111; border: 1px solid #222; border-radius: 8px; padding: 30px 20px; text-align: left; transition: border-color 0.3s ease; }
     .sucursal-card:hover { border-color: var(--cucine-red); }
     .sucursal-card h4 { color: white; font-size: 1.3rem; margin: 0 0 15px 0; border-bottom: 1px solid #333; padding-bottom: 10px;}
     .sucursal-card p { color: #aaa; font-size: 0.9rem; margin: 8px 0; line-height: 1.5; font-weight: 300; }
     .sucursal-card strong { color: #ddd; }
 
     /* --- FOOTER --- */
-    footer {
-      background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a;
-    }
-    footer img { height: 40px; margin-bottom: 20px; opacity: 0.5; filter: grayscale(100%); }
-    footer p { color: #666; font-size: 0.8rem; font-weight: 300; }
+    footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a; }
+    footer p { color: #666; font-size: 0.8rem; font-weight: 300; margin: 5px 0; }
   </style>
 </head>
 <body>
 
-  <!-- HERO (Pantalla inicial) -->
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="navbar">
+    <div class="nav-logo">art<span>cucine</span></div>
+    <button class="menu-btn">☰</button>
+  </nav>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="header-marca">
-        <p>Diseño & Exclusividad</p>
-      </div>
-
+      <div class="header-marca"><p>Diseño & Exclusividad</p></div>
       <div class="letrero-interactivo">
         <div class="cuadro caja-art"><h2>art</h2></div>
         <div class="cuadro caja-cucine"><h2>cucine</h2></div>
@@ -269,73 +195,90 @@
     </div>
   </section>
 
-  <!-- SECCIÓN DE ENGANCHE (Ventas) -->
-  <section class="info-section">
-    <h3>Más que mobiliario, son <strong>tus sueños</strong>.</h3>
-    <p>Diseñamos y fabricamos espacios vanguardistas con materiales de alta resistencia. Vive la experiencia de una cocina inteligente y funcional que se convierte en el corazón de tu hogar.</p>
-    <a href="#" class="btn-cotizar">Solicitar Cotización</a>
+  <!-- ENGANCHE -->
+  <section class="section bg-light">
+    <div class="text-box">
+      <h3 class="section-title">Más que mobiliario, son <strong>tus sueños</strong>.</h3>
+      <p>Diseñamos y fabricamos espacios vanguardistas con acabados supermate y antihuellas. Vive la experiencia de una cocina inteligente y funcional.</p>
+      <a href="#" class="btn-cotizar">Solicitar Cotización</a>
+    </div>
   </section>
 
-  <!-- SECCIÓN DE LÍNEAS DE DISEÑO -->
-  <section class="lineas-section">
+  <!-- QUIÉNES SOMOS -->
+  <section class="section bg-dark">
+    <div class="text-box">
+      <span class="tag">#BienHechoEnVenezuela</span>
+      <h3 class="section-title">Nuestra <strong>Historia</strong></h3>
+      <p>Somos una empresa dedicada a diseñar sueños que fabrican historias. Llevamos armonía a tus espacios bajo un estilo vanguardista y funcional. Con más de 15 años de trayectoria, contamos con una planta automatizada y una capacidad de producción que nos permite ser fabricantes sólidos, rápidos y confiables.</p>
+    </div>
+  </section>
+
+  <!-- LÍNEAS -->
+  <section class="section bg-light">
     <h3 class="section-title">Nuestras <strong>Líneas</strong></h3>
     <div class="lineas-grid">
-      <div class="linea-card bg-europa">
-        <h4>Europa</h4>
-        <p>Acabado supermate, antihuellas y sedoso al tacto.</p>
+      <div class="linea-card bg-europa"><h4>Europa</h4><p>Acabado supermate, antihuellas y sedoso al tacto.</p></div>
+      <div class="linea-card bg-clasica"><h4>Clásica</h4><p>Tradición y calidez con acabados maderados.</p></div>
+      <div class="linea-card bg-reflejos"><h4>Reflejos</h4><p>Brillo de alto impacto que amplía tus espacios.</p></div>
+      <div class="linea-card bg-twin"><h4>Twin</h4><p>La armonía perfecta combinando texturas y colores.</p></div>
+    </div>
+  </section>
+
+  <!-- BLOG / TENDENCIAS -->
+  <section class="section bg-dark">
+    <h3 class="section-title">Últimas <strong>Tendencias</strong></h3>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1588854337236-6889d631faa8?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="blog-content">
+          <h4>Cocinas Inteligentes</h4>
+          <p>Imagina preparar tu café desde la comodidad de tu cama. Los electrodomésticos conectados a la red Wi-Fi simplifican nuestras tareas cotidianas.</p>
+          <a href="#">LEER MÁS ➔</a>
+        </div>
       </div>
-      <div class="linea-card bg-clasica">
-        <h4>Clásica</h4>
-        <p>Tradición y calidez con acabados maderados.</p>
-      </div>
-      <div class="linea-card bg-reflejos">
-        <h4>Reflejos</h4>
-        <p>Brillo de alto impacto que amplía tus espacios.</p>
-      </div>
-      <div class="linea-card bg-twin">
-        <h4>Twin</h4>
-        <p>La armonía perfecta combinando texturas y colores.</p>
+      <div class="blog-card">
+        <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="blog-content">
+          <h4>Diseño en espacios reducidos</h4>
+          <p>La necesidad de optimizar metros cuadrados nos ha llevado a conjugar la tendencia en decoración con la funcionalidad máxima.</p>
+          <a href="#">LEER MÁS ➔</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN DE ALIADOS -->
-  <section class="aliados-section">
-    <p>NUESTROS ALIADOS COMERCIALES</p>
+  <!-- ALIADOS -->
+  <section class="section bg-light">
+    <h3 class="section-title" style="font-size: 1.5rem; color: #888; font-weight: 300;">NUESTROS ALIADOS COMERCIALES</h3>
     <div class="aliados-grid">
-      <!-- Simulando los logos con tipografía para el prototipo -->
       <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
       <div class="aliado-logo" style="text-transform: uppercase;">ALVIC</div>
       <div class="aliado-logo" style="font-weight: 300;">maxpanel</div>
     </div>
   </section>
 
-  <!-- SECCIÓN DE SUCURSALES -->
-  <section class="sucursales-section">
+  <!-- SUCURSALES -->
+  <section class="section bg-dark">
     <h3 class="section-title">Encuentra tu tienda <strong>más cercana</strong></h3>
     <div class="sucursales-grid">
       <div class="sucursal-card">
         <h4>Caracas</h4>
         <p><strong>WhatsApp:</strong> +58 412-1551123</p>
-        <p><strong>Correo:</strong> artcucinecaracas@gmail.com</p>
-        <p><strong>Dirección:</strong> Av. Principal Las Mercedes con Av. Jalisco. C.C. Automercado, Nivel PB.</p>
+        <p><strong>Dirección:</strong> Av. Principal Las Mercedes con Av. Jalisco. C.C. Automercado, PB.</p>
       </div>
       <div class="sucursal-card">
         <h4>Lechería</h4>
         <p><strong>WhatsApp:</strong> +58 412-4376852</p>
-        <p><strong>Correo:</strong> artcucinelch@gmail.com</p>
-        <p><strong>Dirección:</strong> Prolongación Calle Arismendi. C.C. Empresarial Atlántico. Piso 1, Local P1-07.</p>
+        <p><strong>Dirección:</strong> Prolongación Calle Arismendi. C.C. Empresarial Atlántico. P1-07.</p>
       </div>
       <div class="sucursal-card">
         <h4>Puerto Ordaz</h4>
         <p><strong>WhatsApp:</strong> +58 412-4261525</p>
-        <p><strong>Correo:</strong> artcucine.pzo@gmail.com</p>
         <p><strong>Dirección:</strong> Urb. Villa América. C.C. Orinokia Mall, PB, Local C-046.</p>
       </div>
       <div class="sucursal-card">
         <h4>Valencia</h4>
         <p><strong>WhatsApp:</strong> +58 424-6415598</p>
-        <p><strong>Correo:</strong> tiendasartvalencia@gmail.com</p>
         <p><strong>Dirección:</strong> C.C. Viña Jardín, Piso PB, Local 02, Valencia, Edo. Carabobo.</p>
       </div>
     </div>
@@ -343,7 +286,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 Art Cucine. Todos los derechos reservados. #BienHechoEnVenezuela</p>
+    <p>&copy; 2026 Art Cucine. Todos los derechos reservados.</p>
+    <p>Desarrollado con ♥ por tu equipo interno.</p>
   </footer>
 
 </body>
