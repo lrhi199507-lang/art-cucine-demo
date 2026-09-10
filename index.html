@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Cucine - Concept</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .letrero-interactivo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px; 
+      width: 90vw; 
+      max-width: 400px;
+    }
+    .cuadro {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .caja-art { background-color: #211210; }
+    .caja-cucine { background-color: #e63920; }
+    .caja-closet { background-color: #7a151b; }
+    .caja-bano { background-color: #1c355e; }
+    .cuadro h2 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .cuadro:hover, .cuadro:active {
+      transform: scale(1.05); 
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
+    }
+  </style>
+</head>
+<body>
+  <div class="pantalla-principal">
+    <div class="letrero-interactivo">
+      <div class="cuadro caja-art"><h2>art</h2></div>
+      <div class="cuadro caja-cucine"><h2>cucine</h2></div>
+      <div class="cuadro caja-closet"><h2>closet</h2></div>
+      <div class="cuadro caja-bano"><h2>baño</h2></div>
+    </div>
+  </div>
+</body>
+</html>
+
