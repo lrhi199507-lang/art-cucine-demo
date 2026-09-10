@@ -77,7 +77,16 @@
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
 
-    /* --- NUEVO: IA VISUALIZER TEASER --- */
+    /* NUEVO: GALERÍA DE PROYECTOS */
+    .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
+    .galeria-item { position: relative; height: 250px; border-radius: 6px; overflow: hidden; cursor: pointer; }
+    .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.6s ease; filter: brightness(0.6) grayscale(20%); }
+    .galeria-item:hover img { transform: scale(1.08); filter: brightness(1) grayscale(0%); }
+    .galeria-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 25px 20px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); opacity: 0; transition: opacity 0.3s ease; text-align: left; }
+    .galeria-item:hover .galeria-overlay { opacity: 1; }
+    .galeria-overlay h4 { margin: 0; color: white; font-size: 1.1rem; letter-spacing: 1px; }
+
+    /* IA VISUALIZER */
     .ai-teaser { background: linear-gradient(135deg, #050505 0%, #1a0806 100%); border-top: 1px solid var(--cucine-red); border-bottom: 1px solid var(--cucine-red); position: relative; overflow: hidden; padding: 100px 20px;}
     .ai-teaser::before { content: 'AI'; position: absolute; font-size: 20rem; font-weight: 700; color: rgba(230, 57, 32, 0.03); top: -50px; left: -20px; z-index: 0; }
     .ai-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
@@ -87,7 +96,8 @@
 
     /* TESTIMONIOS */
     .testimonio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    .testimonio-card { background: #111; padding: 30px; border-radius: 8px; border: 1px solid #222; text-align: left; }
+    .testimonio-card { background: #111; padding: 30px; border-radius: 8px; border: 1px solid #222; text-align: left; transition: border-color 0.3s;}
+    .testimonio-card:hover { border-color: #444; }
     .estrellas { color: #d4af37; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;}
     .testimonio-card p { font-style: italic; color: #ccc; font-weight: 300; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;}
     .cliente { display: flex; align-items: center; gap: 15px; }
@@ -95,16 +105,24 @@
     .cliente-info h5 { margin: 0 0 4px 0; color: white; font-size: 1rem; }
     .cliente-info span { color: #777; font-size: 0.8rem; }
 
-    /* ALIADOS Y SUCURSALES (RECUPERADOS) */
+    /* ALIADOS */
     .aliados-grid { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
     .aliado-logo { font-size: 2rem; font-weight: 700; color: #444; letter-spacing: 2px; transition: color 0.3s ease; cursor: pointer; }
     .aliado-logo:hover { color: white; }
     
+    /* SUCURSALES */
     .sucursales-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
     .sucursal-card { background: #111; border: 1px solid #222; border-radius: 8px; padding: 30px 20px; text-align: left; transition: border-color 0.3s ease; }
     .sucursal-card:hover { border-color: var(--cucine-red); }
     .sucursal-card h4 { color: white; font-size: 1.3rem; margin: 0 0 15px 0; border-bottom: 1px solid #333; padding-bottom: 10px;}
     .sucursal-card p { color: #aaa; font-size: 0.9rem; margin: 8px 0; line-height: 1.5; font-weight: 300; }
+
+    /* NUEVO: FAQ (PREGUNTAS FRECUENTES) */
+    .faq-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto; text-align: left; }
+    .faq-card { background: #080808; padding: 25px; border-radius: 8px; border: 1px solid #1a1a1a; transition: border-color 0.3s ease; }
+    .faq-card:hover { border-color: var(--cucine-red); }
+    .faq-card h4 { color: white; font-size: 1.1rem; margin: 0 0 10px 0; letter-spacing: 1px; }
+    .faq-card p { color: #888; font-size: 0.95rem; margin: 0; line-height: 1.6; font-weight: 300;}
 
     /* CONTACTO */
     .contacto-container { max-width: 600px; margin: 0 auto; background: #080808; padding: 40px; border-radius: 8px; border: 1px solid #1a1a1a; }
@@ -176,18 +194,37 @@
     </div>
   </section>
 
-  <!-- IA VISUALIZER (TEASER) -->
+  <!-- NUEVO: GALERÍA -->
+  <section class="section bg-dark">
+    <h3 class="section-title">Inspiración y <strong>Proyectos</strong></h3>
+    <div class="galeria-grid">
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=80&w=600&auto=format&fit=crop" alt="Proyecto 1">
+        <div class="galeria-overlay"><h4>Cocina Minimalista - Caracas</h4></div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=600&auto=format&fit=crop" alt="Proyecto 2">
+        <div class="galeria-overlay"><h4>Closet Vanguardia - Lechería</h4></div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=600&auto=format&fit=crop" alt="Proyecto 3">
+        <div class="galeria-overlay"><h4>Baño Elegance - Valencia</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IA VISUALIZER -->
   <section class="section ai-teaser">
     <div class="ai-content">
       <span class="ai-badge">PRÓXIMAMENTE - INNOVACIÓN 2026</span>
       <h3>Diseña tu cocina con <strong>Inteligencia Artificial</strong></h3>
-      <p>Estamos desarrollando una tecnología exclusiva. Podrás subir una foto de tu cocina actual desde tu celular, y nuestra IA superpondrá en tiempo real nuestros acabados, colores y texturas para que visualices tu sueño antes de hacerlo realidad.</p>
+      <p>Sube una foto de tu cocina actual y nuestra IA superpondrá en tiempo real nuestros acabados, colores y texturas para que visualices tu sueño antes de hacerlo realidad.</p>
       <a href="#" class="btn-cotizar" style="background-color: transparent; border: 1px solid var(--cucine-red);">Descubrir Smart Cucine</a>
     </div>
   </section>
 
   <!-- TESTIMONIOS -->
-  <section class="section bg-dark">
+  <section class="section bg-light">
     <h3 class="section-title">Experiencia <strong>Premium</strong></h3>
     <div class="testimonio-grid">
       <div class="testimonio-card">
@@ -209,8 +246,8 @@
     </div>
   </section>
 
-  <!-- ALIADOS (RECUPERADOS) -->
-  <section class="section bg-light">
+  <!-- ALIADOS -->
+  <section class="section bg-dark">
     <h3 class="section-title" style="font-size: 1.5rem; color: #888; font-weight: 300;">NUESTROS ALIADOS COMERCIALES</h3>
     <div class="aliados-grid">
       <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
@@ -219,8 +256,8 @@
     </div>
   </section>
 
-  <!-- SUCURSALES (RECUPERADAS) -->
-  <section class="section bg-dark">
+  <!-- SUCURSALES -->
+  <section class="section bg-light">
     <h3 class="section-title">Nuestras <strong>Sucursales</strong></h3>
     <div class="sucursales-grid">
       <div class="sucursal-card">
@@ -242,6 +279,25 @@
         <h4>Valencia</h4>
         <p><strong>WhatsApp:</strong> +58 424-6415598</p>
         <p><strong>Ubicación:</strong> C.C. Viña Jardín.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVO: PREGUNTAS FRECUENTES -->
+  <section class="section bg-dark">
+    <h3 class="section-title">Preguntas <strong>Frecuentes</strong></h3>
+    <div class="faq-grid">
+      <div class="faq-card">
+        <h4>¿Qué garantía ofrecen?</h4>
+        <p>Todos nuestros proyectos cuentan con 5 años de garantía en herrajes y materiales contra defectos de fábrica.</p>
+      </div>
+      <div class="faq-card">
+        <h4>¿Cuánto tarda la fabricación e instalación?</h4>
+        <p>Una vez aprobado el diseño 3D y procesado el anticipo, el tiempo estimado de entrega e instalación es de 4 a 6 semanas.</p>
+      </div>
+      <div class="faq-card">
+        <h4>¿Trabajan fuera de Valencia o Caracas?</h4>
+        <p>Sí, cubrimos proyectos a nivel nacional apoyándonos en la logística de nuestra red de 8 sucursales.</p>
       </div>
     </div>
   </section>
