@@ -15,6 +15,11 @@
       --bg-light: #0a0a0a;
     }
 
+    /* ELIMINAR EL DESTELLO AZUL AL TOCAR EN CELULARES */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body, html {
       margin: 0; padding: 0;
       background-color: var(--bg-dark);
@@ -95,7 +100,6 @@
     }
     .cuadro:hover h2, .cuadro:active h2 { letter-spacing: 3px; }
 
-    /* INDICADOR DE SCROLL */
     .scroll-indicator {
       position: absolute; bottom: 30px; display: flex; flex-direction: column;
       align-items: center; opacity: 0.7; animation: bounce 2s infinite;
@@ -123,6 +127,15 @@
     }
     .btn-cotizar:hover { background-color: #ff4a30; transform: translateY(-3px); }
 
+    /* --- NUEVO: NUESTRO PROCESO --- */
+    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+    .proceso-step { padding: 40px 20px; background: #080808; border-radius: 8px; border: 1px solid #1a1a1a; transition: border-color 0.3s ease, transform 0.3s ease; }
+    .proceso-step:hover { border-color: var(--cucine-red); transform: translateY(-5px); }
+    .step-number { font-size: 3.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; line-height: 1; transition: color 0.3s ease; }
+    .proceso-step:hover .step-number { color: var(--cucine-red); opacity: 0.5; }
+    .proceso-step h4 { color: white; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 1px; }
+    .proceso-step p { color: #888; font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+
     /* --- LÍNEAS DE DISEÑO --- */
     .lineas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
     .linea-card {
@@ -141,15 +154,19 @@
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
 
-    /* --- BLOG TENDENCIAS --- */
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; text-align: left; }
-    .blog-card { background: #111; border-radius: 8px; overflow: hidden; border: 1px solid #222; transition: border-color 0.3s; }
-    .blog-card:hover { border-color: #444; }
-    .blog-img { height: 200px; background-size: cover; background-position: center; }
-    .blog-content { padding: 25px; }
-    .blog-content h4 { margin: 0 0 15px 0; font-size: 1.2rem; }
-    .blog-content p { color: #888; font-size: 0.9rem; line-height: 1.6; margin: 0 0 15px 0; font-weight: 300; }
-    .blog-content a { color: var(--cucine-red); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
+    /* --- NUEVO: SECCIÓN INSTAGRAM --- */
+    .ig-header { margin-bottom: 30px; }
+    .ig-header h3 { font-weight: 300; font-size: 1.5rem; margin: 0; }
+    .ig-header p { color: var(--cucine-red); font-weight: 700; letter-spacing: 1px; margin-top: 5px; }
+    .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 1000px; margin: 0 auto; }
+    @media (max-width: 768px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ig-post { position: relative; padding-bottom: 100%; background-size: cover; background-position: center; border-radius: 4px; overflow: hidden; cursor: pointer; }
+    .ig-post::after { 
+      content: '🤍'; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+      background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; 
+      font-size: 2rem; opacity: 0; transition: opacity 0.3s ease; 
+    }
+    .ig-post:hover::after { opacity: 1; }
 
     /* --- ALIADOS --- */
     .aliados-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;}
@@ -204,8 +221,30 @@
     </div>
   </section>
 
-  <!-- QUIÉNES SOMOS -->
+  <!-- NUEVO: PROCESO -->
   <section class="section bg-dark">
+    <h3 class="section-title">Nuestro <strong>Proceso</strong></h3>
+    <div class="proceso-grid">
+      <div class="proceso-step">
+        <div class="step-number">01</div>
+        <h4>Asesoría y Diseño 3D</h4>
+        <p>Proyectamos tu idea con medidas exactas y te mostramos el resultado en renders realistas antes de empezar.</p>
+      </div>
+      <div class="proceso-step">
+        <div class="step-number">02</div>
+        <h4>Fabricación Automatizada</h4>
+        <p>En nuestra planta en Venezuela, cortamos y ensamblamos con precisión milimétrica usando maquinaria europea.</p>
+      </div>
+      <div class="proceso-step">
+        <div class="step-number">03</div>
+        <h4>Instalación Premium</h4>
+        <p>Nuestro equipo especializado monta tu proyecto cuidando cada detalle para garantizar acabados perfectos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section class="section bg-light">
     <div class="text-box">
       <span class="tag">#BienHechoEnVenezuela</span>
       <h3 class="section-title">Nuestra <strong>Historia</strong></h3>
@@ -214,7 +253,7 @@
   </section>
 
   <!-- LÍNEAS -->
-  <section class="section bg-light">
+  <section class="section bg-dark">
     <h3 class="section-title">Nuestras <strong>Líneas</strong></h3>
     <div class="lineas-grid">
       <div class="linea-card bg-europa"><h4>Europa</h4><p>Acabado supermate, antihuellas y sedoso al tacto.</p></div>
@@ -224,31 +263,22 @@
     </div>
   </section>
 
-  <!-- BLOG / TENDENCIAS -->
-  <section class="section bg-dark">
-    <h3 class="section-title">Últimas <strong>Tendencias</strong></h3>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1588854337236-6889d631faa8?q=80&w=600&auto=format&fit=crop');"></div>
-        <div class="blog-content">
-          <h4>Cocinas Inteligentes</h4>
-          <p>Imagina preparar tu café desde la comodidad de tu cama. Los electrodomésticos conectados a la red Wi-Fi simplifican nuestras tareas cotidianas.</p>
-          <a href="#">LEER MÁS ➔</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=600&auto=format&fit=crop');"></div>
-        <div class="blog-content">
-          <h4>Diseño en espacios reducidos</h4>
-          <p>La necesidad de optimizar metros cuadrados nos ha llevado a conjugar la tendencia en decoración con la funcionalidad máxima.</p>
-          <a href="#">LEER MÁS ➔</a>
-        </div>
-      </div>
+  <!-- NUEVO: INSTAGRAM / COMUNIDAD -->
+  <section class="section bg-light">
+    <div class="ig-header">
+      <h3>Únete a nuestros +40k seguidores</h3>
+      <p>@artcucine</p>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=400&auto=format&fit=crop');"></div>
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop');"></div>
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400&auto=format&fit=crop');"></div>
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=80&w=400&auto=format&fit=crop');"></div>
     </div>
   </section>
 
   <!-- ALIADOS -->
-  <section class="section bg-light">
+  <section class="section bg-dark">
     <h3 class="section-title" style="font-size: 1.5rem; color: #888; font-weight: 300;">NUESTROS ALIADOS COMERCIALES</h3>
     <div class="aliados-grid">
       <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
@@ -258,7 +288,7 @@
   </section>
 
   <!-- SUCURSALES -->
-  <section class="section bg-dark">
+  <section class="section bg-light">
     <h3 class="section-title">Encuentra tu tienda <strong>más cercana</strong></h3>
     <div class="sucursales-grid">
       <div class="sucursal-card">
