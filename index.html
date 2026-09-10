@@ -23,7 +23,7 @@
       scroll-behavior: smooth;
     }
 
-    /* --- HERO SECTION (Logo Principal) --- */
+    /* --- HERO SECTION --- */
     .hero {
       height: 100vh;
       display: flex;
@@ -33,7 +33,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -44,12 +43,10 @@
       z-index: 0;
       animation: slowZoom 20s infinite alternate;
     }
-
     @keyframes slowZoom {
       0% { transform: scale(1); }
       100% { transform: scale(1.1); }
     }
-
     .hero-content {
       z-index: 1;
       text-align: center;
@@ -58,7 +55,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     .header-marca p {
       font-weight: 300;
       letter-spacing: 8px;
@@ -68,6 +64,7 @@
       margin-bottom: 30px;
     }
 
+    /* GRID DEL LOGO */
     .letrero-interactivo {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -76,7 +73,6 @@
       max-width: 450px;
       margin-bottom: 50px;
     }
-
     .cuadro {
       height: 160px;
       border-radius: 6px;
@@ -90,7 +86,6 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       border: 1px solid rgba(255,255,255,0.05);
     }
-
     .cuadro::before {
       content: "";
       position: absolute;
@@ -102,13 +97,11 @@
       opacity: 0; 
       filter: grayscale(100%);
     }
-
     .caja-art { background-color: var(--art-dark); }
     .caja-cucine { background-color: var(--cucine-red); }
     .caja-closet { background-color: var(--closet-burgundy); }
     .caja-bano { background-color: var(--bano-blue); }
 
-    /* FOTOS ASIGNADAS A LOS CUADROS (Cucine con cocina nueva) */
     .caja-art::before { background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop'); }
     .caja-cucine::before { background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800&auto=format&fit=crop'); }
     .caja-closet::before { background-image: url('https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=80&w=800&auto=format&fit=crop'); }
@@ -119,11 +112,8 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.9);
     }
     .cuadro:hover::before, .cuadro:active::before {
-      opacity: 0.5; 
-      filter: grayscale(0%);
-      transform: scale(1.1);
+      opacity: 0.5; filter: grayscale(0%); transform: scale(1.1);
     }
-
     .cuadro h2 {
       position: relative;
       z-index: 2;
@@ -158,117 +148,102 @@
       60% {transform: translateY(-5px);}
     }
 
-    /* --- INFO SECTION (Texto y Botón) --- */
+    /* --- INFO SECTION --- */
     .info-section {
       padding: 80px 20px;
       background: #0a0a0a;
       text-align: center;
     }
-    .info-section h3 {
-      font-size: 1.8rem;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-    .info-section h3 strong {
-      font-weight: 700;
-      color: var(--cucine-red);
-    }
+    .info-section h3 { font-size: 1.8rem; font-weight: 300; margin-bottom: 20px; }
+    .info-section h3 strong { font-weight: 700; color: var(--cucine-red); }
     .info-section p {
-      font-weight: 300;
-      color: #a3a3a3;
-      line-height: 1.8;
-      max-width: 600px;
-      margin: 0 auto 40px auto;
-      font-size: 1rem;
+      font-weight: 300; color: #a3a3a3; line-height: 1.8; max-width: 600px;
+      margin: 0 auto 40px auto; font-size: 1rem;
     }
     .btn-cotizar {
       display: inline-block;
-      padding: 15px 40px;
-      background-color: var(--cucine-red);
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4);
+      padding: 15px 40px; background-color: var(--cucine-red); color: white;
+      text-decoration: none; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; border-radius: 30px; font-size: 0.9rem;
+      transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4);
     }
-    .btn-cotizar:hover {
-      background-color: #ff4a30;
-      transform: translateY(-3px);
-    }
+    .btn-cotizar:hover { background-color: #ff4a30; transform: translateY(-3px); }
 
-    /* --- NUEVA SECCIÓN: LÍNEAS DE DISEÑO --- */
+    /* --- LÍNEAS DE DISEÑO --- */
     .lineas-section {
-      padding: 60px 20px 100px 20px;
+      padding: 60px 20px 80px 20px;
       background: #050505;
       text-align: center;
     }
-    .lineas-section h3 {
-      font-size: 2rem;
-      font-weight: 300;
-      margin-bottom: 50px;
-      letter-spacing: 2px;
+    .section-title {
+      font-size: 2rem; font-weight: 300; margin-bottom: 50px; letter-spacing: 2px;
     }
     .lineas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px; max-width: 1000px; margin: 0 auto;
     }
     .linea-card {
-      position: relative;
-      height: 300px;
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 25px;
-      text-align: left;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.4s ease;
-      border: 1px solid rgba(255,255,255,0.1);
+      position: relative; height: 300px; border-radius: 8px; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 25px; text-align: left; background-size: cover; background-position: center;
+      transition: transform 0.4s ease; border: 1px solid rgba(255,255,255,0.1);
     }
     .linea-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      /* Gradiente para que el texto siempre se lea bien sobre la foto */
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
       z-index: 1;
     }
-    .linea-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-    }
-    .linea-card h4, .linea-card p {
-      position: relative;
-      z-index: 2;
-      margin: 0;
-    }
-    .linea-card h4 {
-      font-size: 1.5rem;
-      color: white;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-    .linea-card p {
-      font-size: 0.9rem;
-      color: #b3b3b3;
-      font-weight: 300;
-      line-height: 1.5;
-    }
+    .linea-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+    .linea-card h4, .linea-card p { position: relative; z-index: 2; margin: 0; }
+    .linea-card h4 { font-size: 1.5rem; color: white; margin-bottom: 10px; letter-spacing: 1px; }
+    .linea-card p { font-size: 0.9rem; color: #b3b3b3; font-weight: 300; line-height: 1.5; }
 
-    /* FOTOS DE LAS LÍNEAS */
     .bg-europa { background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=600&auto=format&fit=crop'); }
     .bg-clasica { background-image: url('https://images.unsplash.com/photo-1556909211-36987daf7b4d?q=80&w=600&auto=format&fit=crop'); }
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
+
+    /* --- ALIADOS --- */
+    .aliados-section {
+      padding: 60px 20px;
+      background: #0a0a0a;
+      text-align: center;
+    }
+    .aliados-section p { color: #888; font-weight: 300; margin-bottom: 30px; letter-spacing: 1px;}
+    .aliados-grid {
+      display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;
+    }
+    .aliado-logo {
+      font-size: 1.8rem; font-weight: 700; color: #444; letter-spacing: 2px;
+      transition: color 0.3s ease; cursor: pointer;
+    }
+    .aliado-logo:hover { color: white; }
+
+    /* --- SUCURSALES --- */
+    .sucursales-section {
+      padding: 80px 20px;
+      background: #050505;
+      text-align: center;
+    }
+    .sucursales-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; max-width: 1200px; margin: 0 auto;
+    }
+    .sucursal-card {
+      background: #111; border: 1px solid #222; border-radius: 8px;
+      padding: 30px 20px; text-align: left; transition: border-color 0.3s ease;
+    }
+    .sucursal-card:hover { border-color: var(--cucine-red); }
+    .sucursal-card h4 { color: white; font-size: 1.3rem; margin: 0 0 15px 0; border-bottom: 1px solid #333; padding-bottom: 10px;}
+    .sucursal-card p { color: #aaa; font-size: 0.9rem; margin: 8px 0; line-height: 1.5; font-weight: 300; }
+    .sucursal-card strong { color: #ddd; }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a;
+    }
+    footer img { height: 40px; margin-bottom: 20px; opacity: 0.5; filter: grayscale(100%); }
+    footer p { color: #666; font-size: 0.8rem; font-weight: 300; }
   </style>
 </head>
 <body>
@@ -288,7 +263,6 @@
         <div class="cuadro caja-bano"><h2>baño</h2></div>
       </div>
     </div>
-    
     <div class="scroll-indicator">
       <span>Descubre más</span>
       <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
@@ -304,34 +278,73 @@
 
   <!-- SECCIÓN DE LÍNEAS DE DISEÑO -->
   <section class="lineas-section">
-    <h3>Nuestras <strong>Líneas</strong></h3>
-    
+    <h3 class="section-title">Nuestras <strong>Líneas</strong></h3>
     <div class="lineas-grid">
-      <!-- Tarjeta 1 -->
       <div class="linea-card bg-europa">
         <h4>Europa</h4>
-        <p>Acabado supermate, antihuellas y sedoso al tacto. Pura sofisticación tecnológica.</p>
+        <p>Acabado supermate, antihuellas y sedoso al tacto.</p>
       </div>
-      
-      <!-- Tarjeta 2 -->
       <div class="linea-card bg-clasica">
         <h4>Clásica</h4>
-        <p>Tradición y calidez con acabados maderados para un estilo totalmente acogedor.</p>
+        <p>Tradición y calidez con acabados maderados.</p>
       </div>
-      
-      <!-- Tarjeta 3 -->
       <div class="linea-card bg-reflejos">
         <h4>Reflejos</h4>
-        <p>Brillo de alto impacto que ilumina, amplía y moderniza tus espacios.</p>
+        <p>Brillo de alto impacto que amplía tus espacios.</p>
       </div>
-      
-      <!-- Tarjeta 4 -->
       <div class="linea-card bg-twin">
         <h4>Twin</h4>
-        <p>La armonía perfecta combinando diferentes texturas y colores en un solo ambiente.</p>
+        <p>La armonía perfecta combinando texturas y colores.</p>
       </div>
     </div>
   </section>
+
+  <!-- SECCIÓN DE ALIADOS -->
+  <section class="aliados-section">
+    <p>NUESTROS ALIADOS COMERCIALES</p>
+    <div class="aliados-grid">
+      <!-- Simulando los logos con tipografía para el prototipo -->
+      <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
+      <div class="aliado-logo" style="text-transform: uppercase;">ALVIC</div>
+      <div class="aliado-logo" style="font-weight: 300;">maxpanel</div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE SUCURSALES -->
+  <section class="sucursales-section">
+    <h3 class="section-title">Encuentra tu tienda <strong>más cercana</strong></h3>
+    <div class="sucursales-grid">
+      <div class="sucursal-card">
+        <h4>Caracas</h4>
+        <p><strong>WhatsApp:</strong> +58 412-1551123</p>
+        <p><strong>Correo:</strong> artcucinecaracas@gmail.com</p>
+        <p><strong>Dirección:</strong> Av. Principal Las Mercedes con Av. Jalisco. C.C. Automercado, Nivel PB.</p>
+      </div>
+      <div class="sucursal-card">
+        <h4>Lechería</h4>
+        <p><strong>WhatsApp:</strong> +58 412-4376852</p>
+        <p><strong>Correo:</strong> artcucinelch@gmail.com</p>
+        <p><strong>Dirección:</strong> Prolongación Calle Arismendi. C.C. Empresarial Atlántico. Piso 1, Local P1-07.</p>
+      </div>
+      <div class="sucursal-card">
+        <h4>Puerto Ordaz</h4>
+        <p><strong>WhatsApp:</strong> +58 412-4261525</p>
+        <p><strong>Correo:</strong> artcucine.pzo@gmail.com</p>
+        <p><strong>Dirección:</strong> Urb. Villa América. C.C. Orinokia Mall, PB, Local C-046.</p>
+      </div>
+      <div class="sucursal-card">
+        <h4>Valencia</h4>
+        <p><strong>WhatsApp:</strong> +58 424-6415598</p>
+        <p><strong>Correo:</strong> tiendasartvalencia@gmail.com</p>
+        <p><strong>Dirección:</strong> C.C. Viña Jardín, Piso PB, Local 02, Valencia, Edo. Carabobo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Art Cucine. Todos los derechos reservados. #BienHechoEnVenezuela</p>
+  </footer>
 
 </body>
 </html>
