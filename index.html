@@ -79,11 +79,26 @@
     .btn-cotizar { display: inline-block; padding: 15px 40px; background-color: var(--cucine-red); color: white; text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4); border: none; cursor: pointer;}
     .btn-cotizar:hover { background-color: #ff4a30; transform: translateY(-3px); }
 
-    /* NUEVO: CONTADORES ANIMADOS */
+    /* CONTADORES ANIMADOS */
     .stats-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; background: #000; padding: 60px 20px; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
     .stat-box { text-align: center; }
     .stat-number { font-size: 3.5rem; font-weight: 700; color: var(--cucine-red); margin-bottom: 10px; }
     .stat-text { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: #888; }
+
+    /* CONFIGURADOR INTERACTIVO (FOTOS CORREGIDAS) */
+    .configurator-section { background: #080808; padding: 80px 20px; border-top: 1px solid #1a1a1a; }
+    .configurator-wrapper { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto; align-items: center; }
+    .config-view { flex: 1; min-width: 300px; height: 400px; border-radius: 12px; background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center; transition: background-image 0.5s ease-in-out; box-shadow: 0 20px 40px rgba(0,0,0,0.8); border: 1px solid #222;}
+    .config-controls { flex: 1; min-width: 300px; text-align: left; }
+    .config-controls h3 { font-size: 2rem; margin-top: 0; margin-bottom: 20px; font-weight: 300; }
+    .config-controls p { color: #888; line-height: 1.6; margin-bottom: 30px; }
+    .swatch-group { display: flex; gap: 15px; }
+    .swatch { width: 50px; height: 50px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    .swatch:hover { transform: translateY(-5px); }
+    .swatch.active { border-color: white; transform: scale(1.1); }
+    .swatch-dark { background-color: #1a1a1a; }
+    .swatch-wood { background-image: url('https://images.unsplash.com/photo-1556909211-36987daf7b4d?q=80&w=100&auto=format&fit=crop'); background-size: cover; }
+    .swatch-white { background-color: #f5f5f5; border: 1px solid #ddd; }
 
     /* PROCESO */
     .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
@@ -106,21 +121,6 @@
     .bg-clasica { background-image: url('https://images.unsplash.com/photo-1556909211-36987daf7b4d?q=80&w=600&auto=format&fit=crop'); }
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
-
-    /* NUEVO: CONFIGURADOR INTERACTIVO */
-    .configurator-section { background: #080808; padding: 80px 20px; border-top: 1px solid #1a1a1a; }
-    .configurator-wrapper { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto; align-items: center; }
-    .config-view { flex: 1; min-width: 300px; height: 400px; border-radius: 12px; background-image: url('https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center; transition: background-image 0.5s ease-in-out; box-shadow: 0 20px 40px rgba(0,0,0,0.8); border: 1px solid #222;}
-    .config-controls { flex: 1; min-width: 300px; text-align: left; }
-    .config-controls h3 { font-size: 2rem; margin-top: 0; margin-bottom: 20px; font-weight: 300; }
-    .config-controls p { color: #888; line-height: 1.6; margin-bottom: 30px; }
-    .swatch-group { display: flex; gap: 15px; }
-    .swatch { width: 50px; height: 50px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-    .swatch:hover { transform: translateY(-5px); }
-    .swatch.active { border-color: white; transform: scale(1.1); }
-    .swatch-dark { background-color: #1a1a1a; }
-    .swatch-wood { background-image: url('https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=100&auto=format&fit=crop'); background-size: cover; }
-    .swatch-white { background-color: #f5f5f5; border: 1px solid #ddd; }
 
     /* VIDEO SHOWCASE */
     .video-section { position: relative; height: 60vh; min-height: 400px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
@@ -237,7 +237,7 @@
     </div>
   </section>
 
-  <!-- NUEVO: CIFRAS DE AUTORIDAD -->
+  <!-- CIFRAS DE AUTORIDAD -->
   <section class="stats-section reveal">
     <div class="stat-box">
       <div class="stat-number" data-target="15">0</div>
@@ -262,7 +262,7 @@
     </div>
   </section>
 
-  <!-- NUEVO: CONFIGURADOR INTERACTIVO -->
+  <!-- CONFIGURADOR INTERACTIVO (CORREGIDO) -->
   <section class="configurator-section reveal">
     <div class="configurator-wrapper">
       <div class="config-controls">
@@ -270,11 +270,11 @@
         <p>Experimenta con nuestras texturas. Selecciona un acabado para ver cómo transforma el espacio antes de tomar una decisión.</p>
         <div class="swatch-group">
           <!-- Botón Oscuro -->
-          <div class="swatch swatch-dark active" onclick="changeColor('https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=800&auto=format&fit=crop', this)" title="Supermate Oscuro"></div>
+          <div class="swatch swatch-dark active" onclick="changeColor('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop', this)" title="Supermate Oscuro"></div>
           <!-- Botón Madera -->
-          <div class="swatch swatch-wood" onclick="changeColor('https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=800&auto=format&fit=crop', this)" title="Clásico Maderado"></div>
+          <div class="swatch swatch-wood" onclick="changeColor('https://images.unsplash.com/photo-1556909211-36987daf7b4d?q=80&w=800&auto=format&fit=crop', this)" title="Clásico Maderado"></div>
           <!-- Botón Blanco -->
-          <div class="swatch swatch-white" onclick="changeColor('https://images.unsplash.com/photo-1588854337115-1c67d9247e0d?q=80&w=800&auto=format&fit=crop', this)" title="Blanco Reflejos"></div>
+          <div class="swatch swatch-white" onclick="changeColor('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=800&auto=format&fit=crop', this)" title="Blanco Reflejos"></div>
         </div>
       </div>
       <div class="config-view" id="config-view"></div>
@@ -429,20 +429,17 @@
     <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" /></svg>
   </a>
 
-  <!-- CÓDIGO JAVASCRIPT (EL CEREBRO) -->
+  <!-- CÓDIGO JAVASCRIPT (EL CEREBRO DE ANIMACIONES) -->
   <script>
-    // 1. Quitar pantalla de carga
     window.addEventListener('load', function() {
       setTimeout(function() { document.getElementById('preloader').classList.add('hide'); }, 500); 
     });
 
-    // 2. Efecto barra de navegación
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
       if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
     });
 
-    // 3. Menú móvil
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
     const menuItems = document.querySelectorAll('.menu-item');
@@ -453,18 +450,19 @@
     });
     menuItems.forEach(item => { item.addEventListener('click', function() { navLinks.classList.remove('active'); menuBtn.innerHTML = '☰'; }); });
 
-    // 4. Función para cambiar el color del Configurador
+    // JS CORREGIDO PARA EL CONFIGURADOR DE COLORES
     function changeColor(imgUrl, element) {
-      document.getElementById('config-view').style.backgroundImage = `url(${imgUrl})`;
-      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+      document.getElementById('config-view').style.backgroundImage = "url('" + imgUrl + "')";
+      var swatches = document.querySelectorAll('.swatch');
+      for(var i = 0; i < swatches.length; i++) {
+        swatches[i].classList.remove('active');
+      }
       element.classList.add('active');
     }
 
-    // 5. Animación de Contadores al hacer scroll
     const counters = document.querySelectorAll('.stat-number');
     let activated = false;
 
-    // 6. Animaciones de revelado (Scroll Reveal)
     function reveal() {
       var reveals = document.querySelectorAll(".reveal");
       for (var i = 0; i < reveals.length; i++) {
@@ -473,7 +471,6 @@
         if (elementTop < windowHeight - 100) { 
           reveals[i].classList.add("active"); 
           
-          // Si llegamos a los contadores, activarlos
           if(reveals[i].classList.contains('stats-section') && !activated) {
             activated = true;
             counters.forEach(counter => {
@@ -486,7 +483,7 @@
                   setTimeout(updateCount, 40);
                 } else {
                   counter.innerText = target;
-                  if(target > 1000) counter.innerText = "+" + target; // Añade el + al 1200
+                  if(target > 1000) counter.innerText = "+" + target; 
                 }
               };
               updateCount();
