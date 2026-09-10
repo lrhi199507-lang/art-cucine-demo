@@ -15,95 +15,60 @@
       --bg-light: #0a0a0a;
     }
 
-    /* ELIMINAR EL DESTELLO AZUL AL TOCAR EN CELULARES */
-    * {
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { -webkit-tap-highlight-color: transparent; }
 
     body, html {
       margin: 0; padding: 0;
-      background-color: var(--bg-dark);
-      color: white;
+      background-color: var(--bg-dark); color: white;
       font-family: 'Montserrat', sans-serif;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+      overflow-x: hidden; scroll-behavior: smooth;
     }
 
-    /* --- BARRA DE NAVEGACIÓN --- */
+    /* --- NAVEGACIÓN --- */
     .navbar {
       position: fixed; top: 0; left: 0; width: 100%;
-      background: rgba(5, 5, 5, 0.85);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 25px; box-sizing: border-box;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(10px);
+      z-index: 1000; display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 25px; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: lowercase;}
     .nav-logo span { color: var(--cucine-red); }
     .menu-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO --- */
     .hero {
       height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      position: relative; overflow: hidden;
+      justify-content: center; align-items: center; position: relative; overflow: hidden;
     }
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop');
-      background-size: cover; background-position: center;
-      opacity: 0.25; z-index: 0; animation: slowZoom 20s infinite alternate;
+      background-size: cover; background-position: center; opacity: 0.25; z-index: 0; animation: slowZoom 20s infinite alternate;
     }
     @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-    
     .hero-content { z-index: 1; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
-    
-    .header-marca p {
-      font-weight: 300; letter-spacing: 8px; text-transform: uppercase;
-      font-size: 0.85rem; color: #d4af37; margin-bottom: 30px;
-    }
+    .header-marca p { font-weight: 300; letter-spacing: 8px; text-transform: uppercase; font-size: 0.85rem; color: #d4af37; margin-bottom: 30px; }
 
-    /* GRID DEL LOGO */
-    .letrero-interactivo {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
-      width: 90vw; max-width: 450px; margin-bottom: 50px;
-    }
+    /* --- GRID LOGO --- */
+    .letrero-interactivo { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 90vw; max-width: 450px; margin-bottom: 50px; }
     .cuadro {
       height: 160px; border-radius: 6px; position: relative; overflow: hidden;
       cursor: pointer; display: flex; justify-content: center; align-items: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: transform 0.4s ease;
-      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: transform 0.4s ease; border: 1px solid rgba(255,255,255,0.05);
     }
-    .cuadro::before {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background-size: cover; background-position: center; transition: all 0.5s ease;
-      z-index: 1; opacity: 0; filter: grayscale(100%);
-    }
-    .caja-art { background-color: var(--art-dark); }
-    .caja-cucine { background-color: var(--cucine-red); }
-    .caja-closet { background-color: var(--closet-burgundy); }
-    .caja-bano { background-color: var(--bano-blue); }
-
+    .cuadro::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-size: cover; background-position: center; transition: all 0.5s ease; z-index: 1; opacity: 0; filter: grayscale(100%); }
+    .caja-art { background-color: var(--art-dark); } .caja-cucine { background-color: var(--cucine-red); } .caja-closet { background-color: var(--closet-burgundy); } .caja-bano { background-color: var(--bano-blue); }
     .caja-art::before { background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop'); }
     .caja-cucine::before { background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800&auto=format&fit=crop'); }
     .caja-closet::before { background-image: url('https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=80&w=800&auto=format&fit=crop'); }
     .caja-bano::before { background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop'); }
-
     .cuadro:hover, .cuadro:active { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.9); }
     .cuadro:hover::before, .cuadro:active::before { opacity: 0.5; filter: grayscale(0%); transform: scale(1.1); }
-    
-    .cuadro h2 {
-      position: relative; z-index: 2; font-size: 2.2rem; font-weight: 700;
-      letter-spacing: 1px; margin: 0; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-      transition: letter-spacing 0.3s ease;
-    }
+    .cuadro h2 { position: relative; z-index: 2; font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; margin: 0; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); transition: letter-spacing 0.3s ease; }
     .cuadro:hover h2, .cuadro:active h2 { letter-spacing: 3px; }
 
-    .scroll-indicator {
-      position: absolute; bottom: 30px; display: flex; flex-direction: column;
-      align-items: center; opacity: 0.7; animation: bounce 2s infinite;
-    }
+    /* SCROLL INDICATOR */
+    .scroll-indicator { position: absolute; bottom: 30px; display: flex; flex-direction: column; align-items: center; opacity: 0.7; animation: bounce 2s infinite; }
     .scroll-indicator span { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
     .scroll-indicator svg { width: 20px; height: 20px; fill: white; }
     @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
@@ -119,53 +84,49 @@
     .text-box { max-width: 700px; margin: 0 auto; }
     .text-box p { font-weight: 300; color: #a3a3a3; line-height: 1.8; margin-bottom: 30px; font-size: 1.05rem; }
     .tag { display: inline-block; padding: 5px 15px; border: 1px solid var(--cucine-red); color: var(--cucine-red); border-radius: 20px; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 20px; }
-    
-    .btn-cotizar {
-      display: inline-block; padding: 15px 40px; background-color: var(--cucine-red); color: white;
-      text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      border-radius: 30px; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4);
-    }
+    .btn-cotizar { display: inline-block; padding: 15px 40px; background-color: var(--cucine-red); color: white; text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4); }
     .btn-cotizar:hover { background-color: #ff4a30; transform: translateY(-3px); }
 
-    /* --- NUEVO: NUESTRO PROCESO --- */
+    /* --- PROCESO --- */
     .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    .proceso-step { padding: 40px 20px; background: #080808; border-radius: 8px; border: 1px solid #1a1a1a; transition: border-color 0.3s ease, transform 0.3s ease; }
+    .proceso-step { padding: 40px 20px; background: #080808; border-radius: 8px; border: 1px solid #1a1a1a; transition: all 0.3s ease; }
     .proceso-step:hover { border-color: var(--cucine-red); transform: translateY(-5px); }
     .step-number { font-size: 3.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; line-height: 1; transition: color 0.3s ease; }
     .proceso-step:hover .step-number { color: var(--cucine-red); opacity: 0.5; }
     .proceso-step h4 { color: white; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 1px; }
     .proceso-step p { color: #888; font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
 
-    /* --- LÍNEAS DE DISEÑO --- */
+    /* --- LÍNEAS --- */
     .lineas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-    .linea-card {
-      position: relative; height: 300px; border-radius: 8px; overflow: hidden;
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; text-align: left;
-      background-size: cover; background-position: center; transition: transform 0.4s ease; border: 1px solid rgba(255,255,255,0.1);
-    }
+    .linea-card { position: relative; height: 300px; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; text-align: left; background-size: cover; background-position: center; transition: transform 0.4s ease; border: 1px solid rgba(255,255,255,0.1); }
     .linea-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); z-index: 1; }
     .linea-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
     .linea-card h4, .linea-card p { position: relative; z-index: 2; margin: 0; }
     .linea-card h4 { font-size: 1.5rem; color: white; margin-bottom: 10px; letter-spacing: 1px; }
     .linea-card p { font-size: 0.9rem; color: #b3b3b3; font-weight: 300; line-height: 1.5; }
-
     .bg-europa { background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=600&auto=format&fit=crop'); }
     .bg-clasica { background-image: url('https://images.unsplash.com/photo-1556909211-36987daf7b4d?q=80&w=600&auto=format&fit=crop'); }
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
 
-    /* --- NUEVO: SECCIÓN INSTAGRAM --- */
+    /* --- TESTIMONIOS (NUEVO) --- */
+    .testimonio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+    .testimonio-card { background: #111; padding: 30px; border-radius: 8px; border: 1px solid #222; text-align: left; }
+    .estrellas { color: #d4af37; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;}
+    .testimonio-card p { font-style: italic; color: #ccc; font-weight: 300; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;}
+    .cliente { display: flex; align-items: center; gap: 15px; }
+    .cliente-avatar { width: 45px; height: 45px; border-radius: 50%; background-size: cover; background-position: center; }
+    .cliente-info h5 { margin: 0 0 4px 0; color: white; font-size: 1rem; }
+    .cliente-info span { color: #777; font-size: 0.8rem; }
+
+    /* --- INSTAGRAM --- */
     .ig-header { margin-bottom: 30px; }
     .ig-header h3 { font-weight: 300; font-size: 1.5rem; margin: 0; }
     .ig-header p { color: var(--cucine-red); font-weight: 700; letter-spacing: 1px; margin-top: 5px; }
     .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 1000px; margin: 0 auto; }
     @media (max-width: 768px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
     .ig-post { position: relative; padding-bottom: 100%; background-size: cover; background-position: center; border-radius: 4px; overflow: hidden; cursor: pointer; }
-    .ig-post::after { 
-      content: '🤍'; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
-      background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; 
-      font-size: 2rem; opacity: 0; transition: opacity 0.3s ease; 
-    }
+    .ig-post::after { content: '🤍'; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; font-size: 2rem; opacity: 0; transition: opacity 0.3s ease; }
     .ig-post:hover::after { opacity: 1; }
 
     /* --- ALIADOS --- */
@@ -181,6 +142,28 @@
     .sucursal-card p { color: #aaa; font-size: 0.9rem; margin: 8px 0; line-height: 1.5; font-weight: 300; }
     .sucursal-card strong { color: #ddd; }
 
+    /* --- FORMULARIO DE CONTACTO (NUEVO) --- */
+    .contacto-container { max-width: 600px; margin: 0 auto; background: #080808; padding: 40px; border-radius: 8px; border: 1px solid #1a1a1a; }
+    .form-group { margin-bottom: 25px; text-align: left; }
+    .form-group label { display: block; margin-bottom: 8px; color: #888; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+    .form-control { width: 100%; padding: 12px 0; background: transparent; border: none; border-bottom: 1px solid #333; color: white; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: border-color 0.3s; box-sizing: border-box; }
+    .form-control:focus { outline: none; border-bottom-color: var(--cucine-red); }
+    .btn-submit { width: 100%; padding: 15px; background-color: var(--cucine-red); color: white; border: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; cursor: pointer; transition: all 0.3s; margin-top: 10px; font-family: 'Montserrat', sans-serif;}
+    .btn-submit:hover { background-color: #ff4a30; }
+
+    /* --- WHATSAPP FLOTANTE (NUEVO) --- */
+    .whatsapp-btn {
+      position: fixed; bottom: 25px; right: 25px; background-color: #25D366; color: white;
+      width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; text-decoration: none; animation: pulse-wa 2s infinite;
+    }
+    .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
+    @keyframes pulse-wa {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
     /* --- FOOTER --- */
     footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a; }
     footer p { color: #666; font-size: 0.8rem; font-weight: 300; margin: 5px 0; }
@@ -188,7 +171,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN -->
+  <!-- NAVEGACIÓN -->
   <nav class="navbar">
     <div class="nav-logo">art<span>cucine</span></div>
     <button class="menu-btn">☰</button>
@@ -217,43 +200,22 @@
     <div class="text-box">
       <h3 class="section-title">Más que mobiliario, son <strong>tus sueños</strong>.</h3>
       <p>Diseñamos y fabricamos espacios vanguardistas con acabados supermate y antihuellas. Vive la experiencia de una cocina inteligente y funcional.</p>
-      <a href="#" class="btn-cotizar">Solicitar Cotización</a>
+      <a href="#contacto" class="btn-cotizar">Solicitar Cotización</a>
     </div>
   </section>
 
-  <!-- NUEVO: PROCESO -->
+  <!-- PROCESO -->
   <section class="section bg-dark">
     <h3 class="section-title">Nuestro <strong>Proceso</strong></h3>
     <div class="proceso-grid">
-      <div class="proceso-step">
-        <div class="step-number">01</div>
-        <h4>Asesoría y Diseño 3D</h4>
-        <p>Proyectamos tu idea con medidas exactas y te mostramos el resultado en renders realistas antes de empezar.</p>
-      </div>
-      <div class="proceso-step">
-        <div class="step-number">02</div>
-        <h4>Fabricación Automatizada</h4>
-        <p>En nuestra planta en Venezuela, cortamos y ensamblamos con precisión milimétrica usando maquinaria europea.</p>
-      </div>
-      <div class="proceso-step">
-        <div class="step-number">03</div>
-        <h4>Instalación Premium</h4>
-        <p>Nuestro equipo especializado monta tu proyecto cuidando cada detalle para garantizar acabados perfectos.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUIÉNES SOMOS -->
-  <section class="section bg-light">
-    <div class="text-box">
-      <span class="tag">#BienHechoEnVenezuela</span>
-      <h3 class="section-title">Nuestra <strong>Historia</strong></h3>
-      <p>Somos una empresa dedicada a diseñar sueños que fabrican historias. Llevamos armonía a tus espacios bajo un estilo vanguardista y funcional. Con más de 15 años de trayectoria, contamos con una planta automatizada y una capacidad de producción que nos permite ser fabricantes sólidos, rápidos y confiables.</p>
+      <div class="proceso-step"><div class="step-number">01</div><h4>Asesoría y Diseño 3D</h4><p>Proyectamos tu idea con medidas exactas y renders realistas.</p></div>
+      <div class="proceso-step"><div class="step-number">02</div><h4>Fabricación Automatizada</h4><p>Cortamos y ensamblamos con maquinaria europea en nuestra planta.</p></div>
+      <div class="proceso-step"><div class="step-number">03</div><h4>Instalación Premium</h4><p>Nuestro equipo especializado monta tu proyecto cuidando cada detalle.</p></div>
     </div>
   </section>
 
   <!-- LÍNEAS -->
-  <section class="section bg-dark">
+  <section class="section bg-light">
     <h3 class="section-title">Nuestras <strong>Líneas</strong></h3>
     <div class="lineas-grid">
       <div class="linea-card bg-europa"><h4>Europa</h4><p>Acabado supermate, antihuellas y sedoso al tacto.</p></div>
@@ -263,12 +225,32 @@
     </div>
   </section>
 
-  <!-- NUEVO: INSTAGRAM / COMUNIDAD -->
-  <section class="section bg-light">
-    <div class="ig-header">
-      <h3>Únete a nuestros +40k seguidores</h3>
-      <p>@artcucine</p>
+  <!-- TESTIMONIOS (NUEVO) -->
+  <section class="section bg-dark">
+    <h3 class="section-title">Experiencia <strong>Premium</strong></h3>
+    <div class="testimonio-grid">
+      <div class="testimonio-card">
+        <div class="estrellas">★★★★★</div>
+        <p>"Increíble la calidad de los herrajes y el acabado de las puertas. Mi cocina parece de revista y el equipo fue súper profesional."</p>
+        <div class="cliente">
+          <div class="cliente-avatar" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop');"></div>
+          <div class="cliente-info"><h5>Alejandra M.</h5><span>Caracas</span></div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="estrellas">★★★★★</div>
+        <p>"Me rediseñaron los closets y los baños. El material supermate no se raya para nada. 100% recomendados en toda Venezuela."</p>
+        <div class="cliente">
+          <div class="cliente-avatar" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&auto=format&fit=crop');"></div>
+          <div class="cliente-info"><h5>Carlos V.</h5><span>Lechería</span></div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="section bg-light">
+    <div class="ig-header"><h3>Únete a nuestros +40k seguidores</h3><p>@artcucine</p></div>
     <div class="ig-grid">
       <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=400&auto=format&fit=crop');"></div>
       <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop');"></div>
@@ -277,40 +259,25 @@
     </div>
   </section>
 
-  <!-- ALIADOS -->
-  <section class="section bg-dark">
-    <h3 class="section-title" style="font-size: 1.5rem; color: #888; font-weight: 300;">NUESTROS ALIADOS COMERCIALES</h3>
-    <div class="aliados-grid">
-      <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
-      <div class="aliado-logo" style="text-transform: uppercase;">ALVIC</div>
-      <div class="aliado-logo" style="font-weight: 300;">maxpanel</div>
-    </div>
-  </section>
-
-  <!-- SUCURSALES -->
-  <section class="section bg-light">
-    <h3 class="section-title">Encuentra tu tienda <strong>más cercana</strong></h3>
-    <div class="sucursales-grid">
-      <div class="sucursal-card">
-        <h4>Caracas</h4>
-        <p><strong>WhatsApp:</strong> +58 412-1551123</p>
-        <p><strong>Dirección:</strong> Av. Principal Las Mercedes con Av. Jalisco. C.C. Automercado, PB.</p>
-      </div>
-      <div class="sucursal-card">
-        <h4>Lechería</h4>
-        <p><strong>WhatsApp:</strong> +58 412-4376852</p>
-        <p><strong>Dirección:</strong> Prolongación Calle Arismendi. C.C. Empresarial Atlántico. P1-07.</p>
-      </div>
-      <div class="sucursal-card">
-        <h4>Puerto Ordaz</h4>
-        <p><strong>WhatsApp:</strong> +58 412-4261525</p>
-        <p><strong>Dirección:</strong> Urb. Villa América. C.C. Orinokia Mall, PB, Local C-046.</p>
-      </div>
-      <div class="sucursal-card">
-        <h4>Valencia</h4>
-        <p><strong>WhatsApp:</strong> +58 424-6415598</p>
-        <p><strong>Dirección:</strong> C.C. Viña Jardín, Piso PB, Local 02, Valencia, Edo. Carabobo.</p>
-      </div>
+  <!-- CONTACTO FORMULARIO (NUEVO) -->
+  <section class="section bg-dark" id="contacto">
+    <h3 class="section-title">Comienza tu <strong>Proyecto</strong></h3>
+    <div class="contacto-container">
+      <form>
+        <div class="form-group">
+          <label>Nombre y Apellido</label>
+          <input type="text" class="form-control" placeholder="Ej. Ana Pérez">
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" class="form-control" placeholder="+58 412 000 0000">
+        </div>
+        <div class="form-group">
+          <label>¿Qué espacio deseas renovar?</label>
+          <input type="text" class="form-control" placeholder="Ej. Cocina, Closets, Baños...">
+        </div>
+        <button type="button" class="btn-submit">Enviar Solicitud</button>
+      </form>
     </div>
   </section>
 
@@ -319,6 +286,11 @@
     <p>&copy; 2026 Art Cucine. Todos los derechos reservados.</p>
     <p>Desarrollado con ♥ por tu equipo interno.</p>
   </footer>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="#" class="whatsapp-btn">
+    <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" /></svg>
+  </a>
 
 </body>
 </html>
