@@ -22,14 +22,11 @@
     .navbar.scrolled { background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); padding: 15px 40px; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: lowercase; z-index: 1001; position: relative;}
     .nav-logo span { color: var(--cucine-red); }
-    
     .nav-links { display: flex; gap: 30px; }
     .nav-links a { color: white; text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
     .nav-links a:hover { color: var(--cucine-red); }
-    
     .menu-btn { display: none; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; z-index: 1001; position: relative; }
 
-    /* MEDIA QUERY PARA CELULARES (MENÚ MÓVIL) */
     @media (max-width: 768px) {
       .navbar { padding: 20px 25px; }
       .navbar.scrolled { padding: 15px 25px; }
@@ -71,6 +68,15 @@
     .btn-cotizar { display: inline-block; padding: 15px 40px; background-color: var(--cucine-red); color: white; text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4); border: none; cursor: pointer;}
     .btn-cotizar:hover { background-color: #ff4a30; transform: translateY(-3px); }
 
+    /* PROCESO */
+    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+    .proceso-step { padding: 40px 20px; background: #080808; border-radius: 8px; border: 1px solid #1a1a1a; transition: all 0.3s ease; }
+    .proceso-step:hover { border-color: var(--cucine-red); transform: translateY(-5px); }
+    .step-number { font-size: 3.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; line-height: 1; transition: color 0.3s ease; }
+    .proceso-step:hover .step-number { color: var(--cucine-red); opacity: 0.5; }
+    .proceso-step h4 { color: white; font-size: 1.2rem; margin-bottom: 15px; }
+    .proceso-step p { color: #888; font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+
     /* LÍNEAS */
     .lineas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
     .linea-card { position: relative; height: 300px; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; text-align: left; background-size: cover; background-position: center; transition: transform 0.4s ease; border: 1px solid rgba(255,255,255,0.1); }
@@ -84,7 +90,7 @@
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
 
-    /* NUEVO: VIDEO SHOWCASE */
+    /* VIDEO SHOWCASE */
     .video-section { position: relative; height: 60vh; min-height: 400px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; filter: brightness(0.4); z-index: 0; transition: filter 0.5s ease;}
     .video-section:hover .video-bg { filter: brightness(0.6); }
@@ -94,6 +100,14 @@
     .play-btn svg { width: 30px; height: 30px; fill: white; margin-left: 5px; }
     .video-content h3 { font-size: 2rem; font-weight: 300; margin-bottom: 10px; }
     .video-content p { font-weight: 300; color: #ddd; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;}
+
+    /* RESTAURADO: IA VISUALIZER */
+    .ai-teaser { background: linear-gradient(135deg, #050505 0%, #1a0806 100%); border-top: 1px solid var(--cucine-red); border-bottom: 1px solid var(--cucine-red); position: relative; overflow: hidden; padding: 100px 20px;}
+    .ai-teaser::before { content: 'AI'; position: absolute; font-size: 20rem; font-weight: 700; color: rgba(230, 57, 32, 0.03); top: -50px; left: -20px; z-index: 0; }
+    .ai-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; text-align: center; }
+    .ai-badge { display: inline-block; background: rgba(230, 57, 32, 0.1); color: var(--cucine-red); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; border: 1px solid var(--cucine-red); font-weight: 700;}
+    .ai-content h3 { font-size: 2.5rem; margin-bottom: 20px; }
+    .ai-content p { color: #aaa; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;}
 
     /* GALERÍA */
     .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
@@ -110,6 +124,29 @@
     .sucursal-card:hover { border-color: var(--cucine-red); }
     .sucursal-card h4 { color: white; font-size: 1.3rem; margin: 0 0 15px 0; border-bottom: 1px solid #333; padding-bottom: 10px;}
     .sucursal-card p { color: #aaa; font-size: 0.9rem; margin: 8px 0; line-height: 1.5; font-weight: 300; }
+
+    /* TESTIMONIOS */
+    .testimonio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+    .testimonio-card { background: #111; padding: 30px; border-radius: 8px; border: 1px solid #222; text-align: left; transition: border-color 0.3s ease;}
+    .testimonio-card:hover { border-color: #444; }
+    .estrellas { color: #d4af37; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;}
+    .testimonio-card p { font-style: italic; color: #ccc; font-weight: 300; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;}
+    .cliente { display: flex; align-items: center; gap: 15px; }
+    .cliente-avatar { width: 45px; height: 45px; border-radius: 50%; background-size: cover; background-position: center; }
+    .cliente-info h5 { margin: 0 0 4px 0; color: white; font-size: 1rem; }
+    .cliente-info span { color: #777; font-size: 0.8rem; }
+
+    /* ALIADOS */
+    .aliados-grid { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
+    .aliado-logo { font-size: 2rem; font-weight: 700; color: #444; letter-spacing: 2px; transition: color 0.3s ease; cursor: pointer; }
+    .aliado-logo:hover { color: white; }
+
+    /* PREGUNTAS FRECUENTES */
+    .faq-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto; text-align: left; }
+    .faq-card { background: #080808; padding: 25px; border-radius: 8px; border: 1px solid #1a1a1a; transition: border-color 0.3s ease; }
+    .faq-card:hover { border-color: var(--cucine-red); }
+    .faq-card h4 { color: white; font-size: 1.1rem; margin: 0 0 10px 0; letter-spacing: 1px; }
+    .faq-card p { color: #888; font-size: 0.95rem; margin: 0; line-height: 1.6; font-weight: 300;}
 
     /* CONTACTO */
     .contacto-container { max-width: 600px; margin: 0 auto; background: #080808; padding: 40px; border-radius: 8px; border: 1px solid #1a1a1a; }
@@ -137,7 +174,7 @@
 </head>
 <body>
 
-  <!-- NAVEGACIÓN (AHORA FUNCIONAL) -->
+  <!-- NAVEGACIÓN -->
   <nav class="navbar" id="navbar">
     <div class="nav-logo">art<span>cucine</span></div>
     <div class="nav-links" id="nav-links">
@@ -163,7 +200,26 @@
     </div>
   </section>
 
-  <!-- LÍNEAS (Con ID para el menú) -->
+  <!-- ENGANCHE -->
+  <section class="section bg-light">
+    <div class="text-box">
+      <h3 class="section-title">Más que mobiliario, son <strong>tus sueños</strong>.</h3>
+      <p>Diseñamos y fabricamos espacios vanguardistas con acabados supermate y antihuellas.</p>
+      <a href="#contacto" class="btn-cotizar">Solicitar Cotización</a>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="section bg-dark">
+    <h3 class="section-title">Nuestro <strong>Proceso</strong></h3>
+    <div class="proceso-grid">
+      <div class="proceso-step"><div class="step-number">01</div><h4>Asesoría y Diseño 3D</h4><p>Proyectamos tu idea con medidas exactas y renders realistas.</p></div>
+      <div class="proceso-step"><div class="step-number">02</div><h4>Fabricación Automatizada</h4><p>Cortamos y ensamblamos con maquinaria europea en nuestra planta.</p></div>
+      <div class="proceso-step"><div class="step-number">03</div><h4>Instalación Premium</h4><p>Nuestro equipo especializado monta tu proyecto cuidando cada detalle.</p></div>
+    </div>
+  </section>
+
+  <!-- LÍNEAS -->
   <section class="section bg-light" id="lineas">
     <h3 class="section-title">Nuestras <strong>Líneas</strong></h3>
     <div class="lineas-grid">
@@ -174,7 +230,7 @@
     </div>
   </section>
 
-  <!-- NUEVO: VIDEO SHOWCASE -->
+  <!-- VIDEO SHOWCASE -->
   <section class="video-section">
     <div class="video-bg"></div>
     <div class="video-content">
@@ -186,7 +242,17 @@
     </div>
   </section>
 
-  <!-- GALERÍA (Con ID) -->
+  <!-- RESTAURADO: IA VISUALIZER -->
+  <section class="section ai-teaser">
+    <div class="ai-content">
+      <span class="ai-badge">PRÓXIMAMENTE - INNOVACIÓN 2026</span>
+      <h3>Diseña tu cocina con <strong>Inteligencia Artificial</strong></h3>
+      <p>Sube una foto de tu cocina actual y nuestra IA superpondrá en tiempo real nuestros acabados, colores y texturas para que visualices tu sueño antes de hacerlo realidad.</p>
+      <a href="#contacto" class="btn-cotizar" style="background-color: transparent; border: 1px solid var(--cucine-red);">Descubrir Smart Cucine</a>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
   <section class="section bg-dark" id="proyectos">
     <h3 class="section-title">Inspiración y <strong>Proyectos</strong></h3>
     <div class="galeria-grid">
@@ -196,7 +262,7 @@
     </div>
   </section>
 
-  <!-- SUCURSALES (Con ID) -->
+  <!-- SUCURSALES -->
   <section class="section bg-light" id="sucursales">
     <h3 class="section-title">Nuestras <strong>Sucursales</strong></h3>
     <div class="sucursales-grid">
@@ -207,8 +273,51 @@
     </div>
   </section>
 
-  <!-- CONTACTO (Con ID) -->
-  <section class="section bg-dark" id="contacto">
+  <!-- TESTIMONIOS -->
+  <section class="section bg-dark">
+    <h3 class="section-title">Experiencia <strong>Premium</strong></h3>
+    <div class="testimonio-grid">
+      <div class="testimonio-card">
+        <div class="estrellas">★★★★★</div>
+        <p>"Increíble la calidad de los herrajes y el acabado. Mi cocina parece de revista."</p>
+        <div class="cliente">
+          <div class="cliente-avatar" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop');"></div>
+          <div class="cliente-info"><h5>Alejandra M.</h5><span>Caracas</span></div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="estrellas">★★★★★</div>
+        <p>"El material supermate no se raya para nada. 100% recomendados en Venezuela."</p>
+        <div class="cliente">
+          <div class="cliente-avatar" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&auto=format&fit=crop');"></div>
+          <div class="cliente-info"><h5>Carlos V.</h5><span>Lechería</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALIADOS -->
+  <section class="section bg-light">
+    <h3 class="section-title" style="font-size: 1.5rem; color: #888; font-weight: 300;">NUESTROS ALIADOS COMERCIALES</h3>
+    <div class="aliados-grid">
+      <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
+      <div class="aliado-logo" style="text-transform: uppercase;">ALVIC</div>
+      <div class="aliado-logo" style="font-weight: 300;">maxpanel</div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="section bg-dark">
+    <h3 class="section-title">Preguntas <strong>Frecuentes</strong></h3>
+    <div class="faq-grid">
+      <div class="faq-card"><h4>¿Qué garantía ofrecen?</h4><p>5 años de garantía en herrajes y materiales contra defectos de fábrica.</p></div>
+      <div class="faq-card"><h4>¿Cuánto tarda la instalación?</h4><p>El tiempo estimado de entrega e instalación es de 4 a 6 semanas.</p></div>
+      <div class="faq-card"><h4>¿Trabajan fuera de Valencia o Caracas?</h4><p>Sí, cubrimos proyectos a nivel nacional apoyándonos en nuestras 8 sucursales.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section bg-light" id="contacto">
     <h3 class="section-title">Comienza tu <strong>Proyecto</strong></h3>
     <div class="contacto-container">
       <form>
@@ -236,16 +345,11 @@
       </div>
       <div class="footer-col">
         <h4>Únete al Newsletter</h4>
-        <p>Recibe tendencias de diseño y promociones exclusivas.</p>
-        <div class="newsletter-box">
-          <input type="email" placeholder="Tu correo electrónico">
-          <button>➔</button>
-        </div>
+        <p>Recibe tendencias de diseño y promociones.</p>
+        <div class="newsletter-box"><input type="email" placeholder="Tu correo electrónico"><button>➔</button></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Art Cucine. Todos los derechos reservados.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Art Cucine. Todos los derechos reservados.</p></div>
   </footer>
 
   <!-- WHATSAPP -->
@@ -255,37 +359,22 @@
 
   <!-- CÓDIGO JAVASCRIPT (EL CEREBRO) -->
   <script>
-    // 1. Efecto de la barra de navegación al hacer scroll
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
     });
 
-    // 2. Abrir y cerrar el menú en celulares
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
     const menuItems = document.querySelectorAll('.menu-item');
 
     menuBtn.addEventListener('click', function() {
       navLinks.classList.toggle('active');
-      // Cambiar el icono de hamburguesa a una X
-      if(navLinks.classList.contains('active')){
-        menuBtn.innerHTML = '✕';
-      } else {
-        menuBtn.innerHTML = '☰';
-      }
+      if(navLinks.classList.contains('active')){ menuBtn.innerHTML = '✕'; } else { menuBtn.innerHTML = '☰'; }
     });
 
-    // 3. Cerrar el menú automáticamente al tocar un enlace en el celular
     menuItems.forEach(item => {
-      item.addEventListener('click', function() {
-        navLinks.classList.remove('active');
-        menuBtn.innerHTML = '☰';
-      });
+      item.addEventListener('click', function() { navLinks.classList.remove('active'); menuBtn.innerHTML = '☰'; });
     });
   </script>
 </body>
