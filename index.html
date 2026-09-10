@@ -17,11 +17,27 @@
     * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
     body, html { margin: 0; padding: 0; background-color: var(--bg-dark); color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-    /* NAVEGACIÓN */
-    .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: lowercase;}
+    /* NAVEGACIÓN INTELIGENTE */
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; background: transparent; transition: background 0.4s ease, padding 0.4s ease; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 25px 40px; }
+    .navbar.scrolled { background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); padding: 15px 40px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .nav-logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: lowercase; z-index: 1001; position: relative;}
     .nav-logo span { color: var(--cucine-red); }
-    .menu-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+    
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { color: white; text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--cucine-red); }
+    
+    .menu-btn { display: none; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; z-index: 1001; position: relative; }
+
+    /* MEDIA QUERY PARA CELULARES (MENÚ MÓVIL) */
+    @media (max-width: 768px) {
+      .navbar { padding: 20px 25px; }
+      .navbar.scrolled { padding: 15px 25px; }
+      .menu-btn { display: block; }
+      .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(5,5,5,0.98); flex-direction: column; justify-content: center; align-items: center; transition: right 0.4s ease; gap: 40px; }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 1.5rem; }
+    }
 
     /* HERO */
     .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; }
@@ -45,24 +61,15 @@
     .cuadro:hover h2, .cuadro:active h2 { letter-spacing: 3px; }
 
     /* GLOBALES */
-    .section { padding: 80px 20px; text-align: center; }
+    .section { padding: 100px 20px; text-align: center; }
     .bg-dark { background: var(--bg-dark); }
     .bg-light { background: var(--bg-light); }
     .section-title { font-size: 2rem; font-weight: 300; margin-bottom: 40px; letter-spacing: 2px; }
     .section-title strong { font-weight: 700; color: var(--cucine-red); }
     .text-box { max-width: 700px; margin: 0 auto; }
     .text-box p { font-weight: 300; color: #a3a3a3; line-height: 1.8; margin-bottom: 30px; font-size: 1.05rem; }
-    .btn-cotizar { display: inline-block; padding: 15px 40px; background-color: var(--cucine-red); color: white; text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4); }
+    .btn-cotizar { display: inline-block; padding: 15px 40px; background-color: var(--cucine-red); color: white; text-decoration: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(230, 57, 32, 0.4); border: none; cursor: pointer;}
     .btn-cotizar:hover { background-color: #ff4a30; transform: translateY(-3px); }
-
-    /* PROCESO */
-    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    .proceso-step { padding: 40px 20px; background: #080808; border-radius: 8px; border: 1px solid #1a1a1a; transition: all 0.3s ease; }
-    .proceso-step:hover { border-color: var(--cucine-red); transform: translateY(-5px); }
-    .step-number { font-size: 3.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; transition: color 0.3s ease; }
-    .proceso-step:hover .step-number { color: var(--cucine-red); opacity: 0.5; }
-    .proceso-step h4 { color: white; font-size: 1.2rem; margin-bottom: 15px; }
-    .proceso-step p { color: #888; font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
 
     /* LÍNEAS */
     .lineas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
@@ -77,7 +84,18 @@
     .bg-reflejos { background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop'); }
     .bg-twin { background-image: url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=600&auto=format&fit=crop'); }
 
-    /* NUEVO: GALERÍA DE PROYECTOS */
+    /* NUEVO: VIDEO SHOWCASE */
+    .video-section { position: relative; height: 60vh; min-height: 400px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+    .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; filter: brightness(0.4); z-index: 0; transition: filter 0.5s ease;}
+    .video-section:hover .video-bg { filter: brightness(0.6); }
+    .video-content { position: relative; z-index: 1; text-align: center; }
+    .play-btn { width: 80px; height: 80px; background: rgba(230, 57, 32, 0.9); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px auto; cursor: pointer; transition: transform 0.3s ease; box-shadow: 0 0 0 10px rgba(230, 57, 32, 0.2); }
+    .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(230, 57, 32, 0.3); }
+    .play-btn svg { width: 30px; height: 30px; fill: white; margin-left: 5px; }
+    .video-content h3 { font-size: 2rem; font-weight: 300; margin-bottom: 10px; }
+    .video-content p { font-weight: 300; color: #ddd; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;}
+
+    /* GALERÍA */
     .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
     .galeria-item { position: relative; height: 250px; border-radius: 6px; overflow: hidden; cursor: pointer; }
     .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.6s ease; filter: brightness(0.6) grayscale(20%); }
@@ -86,30 +104,6 @@
     .galeria-item:hover .galeria-overlay { opacity: 1; }
     .galeria-overlay h4 { margin: 0; color: white; font-size: 1.1rem; letter-spacing: 1px; }
 
-    /* IA VISUALIZER */
-    .ai-teaser { background: linear-gradient(135deg, #050505 0%, #1a0806 100%); border-top: 1px solid var(--cucine-red); border-bottom: 1px solid var(--cucine-red); position: relative; overflow: hidden; padding: 100px 20px;}
-    .ai-teaser::before { content: 'AI'; position: absolute; font-size: 20rem; font-weight: 700; color: rgba(230, 57, 32, 0.03); top: -50px; left: -20px; z-index: 0; }
-    .ai-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-    .ai-badge { display: inline-block; background: rgba(230, 57, 32, 0.1); color: var(--cucine-red); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; border: 1px solid var(--cucine-red); font-weight: 700;}
-    .ai-content h3 { font-size: 2.5rem; margin-bottom: 20px; }
-    .ai-content p { color: #aaa; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;}
-
-    /* TESTIMONIOS */
-    .testimonio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    .testimonio-card { background: #111; padding: 30px; border-radius: 8px; border: 1px solid #222; text-align: left; transition: border-color 0.3s;}
-    .testimonio-card:hover { border-color: #444; }
-    .estrellas { color: #d4af37; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;}
-    .testimonio-card p { font-style: italic; color: #ccc; font-weight: 300; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;}
-    .cliente { display: flex; align-items: center; gap: 15px; }
-    .cliente-avatar { width: 45px; height: 45px; border-radius: 50%; background-size: cover; background-position: center; }
-    .cliente-info h5 { margin: 0 0 4px 0; color: white; font-size: 1rem; }
-    .cliente-info span { color: #777; font-size: 0.8rem; }
-
-    /* ALIADOS */
-    .aliados-grid { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
-    .aliado-logo { font-size: 2rem; font-weight: 700; color: #444; letter-spacing: 2px; transition: color 0.3s ease; cursor: pointer; }
-    .aliado-logo:hover { color: white; }
-    
     /* SUCURSALES */
     .sucursales-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
     .sucursal-card { background: #111; border: 1px solid #222; border-radius: 8px; padding: 30px 20px; text-align: left; transition: border-color 0.3s ease; }
@@ -117,37 +111,42 @@
     .sucursal-card h4 { color: white; font-size: 1.3rem; margin: 0 0 15px 0; border-bottom: 1px solid #333; padding-bottom: 10px;}
     .sucursal-card p { color: #aaa; font-size: 0.9rem; margin: 8px 0; line-height: 1.5; font-weight: 300; }
 
-    /* NUEVO: FAQ (PREGUNTAS FRECUENTES) */
-    .faq-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 800px; margin: 0 auto; text-align: left; }
-    .faq-card { background: #080808; padding: 25px; border-radius: 8px; border: 1px solid #1a1a1a; transition: border-color 0.3s ease; }
-    .faq-card:hover { border-color: var(--cucine-red); }
-    .faq-card h4 { color: white; font-size: 1.1rem; margin: 0 0 10px 0; letter-spacing: 1px; }
-    .faq-card p { color: #888; font-size: 0.95rem; margin: 0; line-height: 1.6; font-weight: 300;}
-
     /* CONTACTO */
     .contacto-container { max-width: 600px; margin: 0 auto; background: #080808; padding: 40px; border-radius: 8px; border: 1px solid #1a1a1a; }
     .form-group { margin-bottom: 25px; text-align: left; }
     .form-group label { display: block; margin-bottom: 8px; color: #888; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
     .form-control { width: 100%; padding: 12px 0; background: transparent; border: none; border-bottom: 1px solid #333; color: white; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: border-color 0.3s; }
     .form-control:focus { outline: none; border-bottom-color: var(--cucine-red); }
-    .btn-submit { width: 100%; padding: 15px; background-color: var(--cucine-red); color: white; border: none; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 30px; cursor: pointer; transition: all 0.3s; margin-top: 10px; font-family: 'Montserrat', sans-serif;}
-    .btn-submit:hover { background-color: #ff4a30; }
 
     /* WHATSAPP */
     .whatsapp-btn { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; text-decoration: none; animation: pulse-wa 2s infinite; }
     .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
     @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-    footer { background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a; }
-    footer p { color: #666; font-size: 0.8rem; font-weight: 300; margin: 5px 0; }
+    /* FOOTER AVANZADO */
+    footer { background: #000; padding: 60px 20px 20px 20px; border-top: 1px solid #1a1a1a; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: left; border-bottom: 1px solid #222; padding-bottom: 40px; margin-bottom: 20px;}
+    .footer-col h4 { color: white; font-size: 1.1rem; margin-bottom: 20px; letter-spacing: 1px; }
+    .footer-col p, .footer-col a { color: #888; font-size: 0.9rem; font-weight: 300; text-decoration: none; display: block; margin-bottom: 10px; transition: color 0.3s; }
+    .footer-col a:hover { color: var(--cucine-red); }
+    .newsletter-box { display: flex; margin-top: 15px; }
+    .newsletter-box input { flex: 1; padding: 10px; background: #111; border: 1px solid #333; color: white; border-radius: 4px 0 0 4px; outline: none; }
+    .newsletter-box button { padding: 10px 15px; background: var(--cucine-red); color: white; border: none; font-weight: 700; border-radius: 0 4px 4px 0; cursor: pointer; }
+    .footer-bottom { text-align: center; color: #555; font-size: 0.8rem; font-weight: 300; }
   </style>
 </head>
 <body>
 
-  <!-- NAVEGACIÓN -->
-  <nav class="navbar">
+  <!-- NAVEGACIÓN (AHORA FUNCIONAL) -->
+  <nav class="navbar" id="navbar">
     <div class="nav-logo">art<span>cucine</span></div>
-    <button class="menu-btn">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#lineas" class="menu-item">Líneas</a>
+      <a href="#proyectos" class="menu-item">Proyectos</a>
+      <a href="#sucursales" class="menu-item">Sucursales</a>
+      <a href="#contacto" class="menu-item">Contacto</a>
+    </div>
+    <button class="menu-btn" id="menu-btn">☰</button>
   </nav>
 
   <!-- HERO -->
@@ -164,27 +163,8 @@
     </div>
   </section>
 
-  <!-- ENGANCHE -->
-  <section class="section bg-light">
-    <div class="text-box">
-      <h3 class="section-title">Más que mobiliario, son <strong>tus sueños</strong>.</h3>
-      <p>Diseñamos y fabricamos espacios vanguardistas con acabados supermate y antihuellas.</p>
-      <a href="#contacto" class="btn-cotizar">Solicitar Cotización</a>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <section class="section bg-dark">
-    <h3 class="section-title">Nuestro <strong>Proceso</strong></h3>
-    <div class="proceso-grid">
-      <div class="proceso-step"><div class="step-number">01</div><h4>Asesoría y Diseño 3D</h4><p>Proyectamos tu idea con medidas exactas y renders realistas.</p></div>
-      <div class="proceso-step"><div class="step-number">02</div><h4>Fabricación Automatizada</h4><p>Cortamos y ensamblamos con maquinaria europea en nuestra planta.</p></div>
-      <div class="proceso-step"><div class="step-number">03</div><h4>Instalación Premium</h4><p>Nuestro equipo especializado monta tu proyecto cuidando cada detalle.</p></div>
-    </div>
-  </section>
-
-  <!-- LÍNEAS -->
-  <section class="section bg-light">
+  <!-- LÍNEAS (Con ID para el menú) -->
+  <section class="section bg-light" id="lineas">
     <h3 class="section-title">Nuestras <strong>Líneas</strong></h3>
     <div class="lineas-grid">
       <div class="linea-card bg-europa"><h4>Europa</h4><p>Acabado supermate, antihuellas y sedoso.</p></div>
@@ -194,116 +174,41 @@
     </div>
   </section>
 
-  <!-- NUEVO: GALERÍA -->
-  <section class="section bg-dark">
+  <!-- NUEVO: VIDEO SHOWCASE -->
+  <section class="video-section">
+    <div class="video-bg"></div>
+    <div class="video-content">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5V19L19 12L8 5Z" /></svg>
+      </div>
+      <h3>Fabricación de Primer Mundo</h3>
+      <p>Conoce nuestra planta automatizada</p>
+    </div>
+  </section>
+
+  <!-- GALERÍA (Con ID) -->
+  <section class="section bg-dark" id="proyectos">
     <h3 class="section-title">Inspiración y <strong>Proyectos</strong></h3>
     <div class="galeria-grid">
-      <div class="galeria-item">
-        <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=80&w=600&auto=format&fit=crop" alt="Proyecto 1">
-        <div class="galeria-overlay"><h4>Cocina Minimalista - Caracas</h4></div>
-      </div>
-      <div class="galeria-item">
-        <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=600&auto=format&fit=crop" alt="Proyecto 2">
-        <div class="galeria-overlay"><h4>Closet Vanguardia - Lechería</h4></div>
-      </div>
-      <div class="galeria-item">
-        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=600&auto=format&fit=crop" alt="Proyecto 3">
-        <div class="galeria-overlay"><h4>Baño Elegance - Valencia</h4></div>
-      </div>
+      <div class="galeria-item"><img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?q=80&w=600&auto=format&fit=crop" alt="Proyecto 1"><div class="galeria-overlay"><h4>Cocina Minimalista - Caracas</h4></div></div>
+      <div class="galeria-item"><img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=600&auto=format&fit=crop" alt="Proyecto 2"><div class="galeria-overlay"><h4>Closet Vanguardia - Lechería</h4></div></div>
+      <div class="galeria-item"><img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=600&auto=format&fit=crop" alt="Proyecto 3"><div class="galeria-overlay"><h4>Baño Elegance - Valencia</h4></div></div>
     </div>
   </section>
 
-  <!-- IA VISUALIZER -->
-  <section class="section ai-teaser">
-    <div class="ai-content">
-      <span class="ai-badge">PRÓXIMAMENTE - INNOVACIÓN 2026</span>
-      <h3>Diseña tu cocina con <strong>Inteligencia Artificial</strong></h3>
-      <p>Sube una foto de tu cocina actual y nuestra IA superpondrá en tiempo real nuestros acabados, colores y texturas para que visualices tu sueño antes de hacerlo realidad.</p>
-      <a href="#" class="btn-cotizar" style="background-color: transparent; border: 1px solid var(--cucine-red);">Descubrir Smart Cucine</a>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="section bg-light">
-    <h3 class="section-title">Experiencia <strong>Premium</strong></h3>
-    <div class="testimonio-grid">
-      <div class="testimonio-card">
-        <div class="estrellas">★★★★★</div>
-        <p>"Increíble la calidad de los herrajes y el acabado. Mi cocina parece de revista."</p>
-        <div class="cliente">
-          <div class="cliente-avatar" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop');"></div>
-          <div class="cliente-info"><h5>Alejandra M.</h5><span>Caracas</span></div>
-        </div>
-      </div>
-      <div class="testimonio-card">
-        <div class="estrellas">★★★★★</div>
-        <p>"El material supermate no se raya para nada. 100% recomendados en Venezuela."</p>
-        <div class="cliente">
-          <div class="cliente-avatar" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&auto=format&fit=crop');"></div>
-          <div class="cliente-info"><h5>Carlos V.</h5><span>Lechería</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ALIADOS -->
-  <section class="section bg-dark">
-    <h3 class="section-title" style="font-size: 1.5rem; color: #888; font-weight: 300;">NUESTROS ALIADOS COMERCIALES</h3>
-    <div class="aliados-grid">
-      <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
-      <div class="aliado-logo" style="text-transform: uppercase;">ALVIC</div>
-      <div class="aliado-logo" style="font-weight: 300;">maxpanel</div>
-    </div>
-  </section>
-
-  <!-- SUCURSALES -->
-  <section class="section bg-light">
+  <!-- SUCURSALES (Con ID) -->
+  <section class="section bg-light" id="sucursales">
     <h3 class="section-title">Nuestras <strong>Sucursales</strong></h3>
     <div class="sucursales-grid">
-      <div class="sucursal-card">
-        <h4>Caracas</h4>
-        <p><strong>WhatsApp:</strong> +58 412-1551123</p>
-        <p><strong>Ubicación:</strong> C.C. Automercado, Las Mercedes.</p>
-      </div>
-      <div class="sucursal-card">
-        <h4>Lechería</h4>
-        <p><strong>WhatsApp:</strong> +58 412-4376852</p>
-        <p><strong>Ubicación:</strong> C.C. Empresarial Atlántico.</p>
-      </div>
-      <div class="sucursal-card">
-        <h4>Puerto Ordaz</h4>
-        <p><strong>WhatsApp:</strong> +58 412-4261525</p>
-        <p><strong>Ubicación:</strong> C.C. Orinokia Mall.</p>
-      </div>
-      <div class="sucursal-card">
-        <h4>Valencia</h4>
-        <p><strong>WhatsApp:</strong> +58 424-6415598</p>
-        <p><strong>Ubicación:</strong> C.C. Viña Jardín.</p>
-      </div>
+      <div class="sucursal-card"><h4>Caracas</h4><p><strong>WhatsApp:</strong> +58 412-1551123</p><p><strong>Ubicación:</strong> C.C. Automercado, PB.</p></div>
+      <div class="sucursal-card"><h4>Lechería</h4><p><strong>WhatsApp:</strong> +58 412-4376852</p><p><strong>Ubicación:</strong> C.C. Empresarial Atlántico.</p></div>
+      <div class="sucursal-card"><h4>Puerto Ordaz</h4><p><strong>WhatsApp:</strong> +58 412-4261525</p><p><strong>Ubicación:</strong> C.C. Orinokia Mall.</p></div>
+      <div class="sucursal-card"><h4>Valencia</h4><p><strong>WhatsApp:</strong> +58 424-6415598</p><p><strong>Ubicación:</strong> C.C. Viña Jardín.</p></div>
     </div>
   </section>
 
-  <!-- NUEVO: PREGUNTAS FRECUENTES -->
-  <section class="section bg-dark">
-    <h3 class="section-title">Preguntas <strong>Frecuentes</strong></h3>
-    <div class="faq-grid">
-      <div class="faq-card">
-        <h4>¿Qué garantía ofrecen?</h4>
-        <p>Todos nuestros proyectos cuentan con 5 años de garantía en herrajes y materiales contra defectos de fábrica.</p>
-      </div>
-      <div class="faq-card">
-        <h4>¿Cuánto tarda la fabricación e instalación?</h4>
-        <p>Una vez aprobado el diseño 3D y procesado el anticipo, el tiempo estimado de entrega e instalación es de 4 a 6 semanas.</p>
-      </div>
-      <div class="faq-card">
-        <h4>¿Trabajan fuera de Valencia o Caracas?</h4>
-        <p>Sí, cubrimos proyectos a nivel nacional apoyándonos en la logística de nuestra red de 8 sucursales.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="section bg-light" id="contacto">
+  <!-- CONTACTO (Con ID) -->
+  <section class="section bg-dark" id="contacto">
     <h3 class="section-title">Comienza tu <strong>Proyecto</strong></h3>
     <div class="contacto-container">
       <form>
@@ -314,8 +219,33 @@
     </div>
   </section>
 
+  <!-- FOOTER AVANZADO -->
   <footer>
-    <p>&copy; 2026 Art Cucine. Todos los derechos reservados.</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 style="font-size: 1.5rem; text-transform: lowercase;">art<span style="color: var(--cucine-red);">cucine</span></h4>
+        <p>Diseñamos sueños que fabrican historias. Vanguardia, tecnología y funcionalidad para tu hogar.</p>
+        <p style="color: var(--cucine-red); font-weight: 700; margin-top: 15px;">#BienHechoEnVenezuela</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <a href="#lineas">Nuestras Líneas</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sucursales">Sucursales</a>
+        <a href="#contacto">Cotizar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Únete al Newsletter</h4>
+        <p>Recibe tendencias de diseño y promociones exclusivas.</p>
+        <div class="newsletter-box">
+          <input type="email" placeholder="Tu correo electrónico">
+          <button>➔</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Art Cucine. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
   <!-- WHATSAPP -->
@@ -323,5 +253,40 @@
     <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" /></svg>
   </a>
 
+  <!-- CÓDIGO JAVASCRIPT (EL CEREBRO) -->
+  <script>
+    // 1. Efecto de la barra de navegación al hacer scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 2. Abrir y cerrar el menú en celulares
+    const menuBtn = document.getElementById('menu-btn');
+    const navLinks = document.getElementById('nav-links');
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    menuBtn.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      // Cambiar el icono de hamburguesa a una X
+      if(navLinks.classList.contains('active')){
+        menuBtn.innerHTML = '✕';
+      } else {
+        menuBtn.innerHTML = '☰';
+      }
+    });
+
+    // 3. Cerrar el menú automáticamente al tocar un enlace en el celular
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        navLinks.classList.remove('active');
+        menuBtn.innerHTML = '☰';
+      });
+    });
+  </script>
 </body>
 </html>
