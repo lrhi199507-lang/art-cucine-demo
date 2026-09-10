@@ -85,7 +85,7 @@
     .stat-number { font-size: 3.5rem; font-weight: 700; color: var(--cucine-red); margin-bottom: 10px; }
     .stat-text { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: #888; }
 
-    /* CONFIGURADOR INTERACTIVO (FOTOS CORREGIDAS) */
+    /* CONFIGURADOR INTERACTIVO */
     .configurator-section { background: #080808; padding: 80px 20px; border-top: 1px solid #1a1a1a; }
     .configurator-wrapper { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto; align-items: center; }
     .config-view { flex: 1; min-width: 300px; height: 400px; border-radius: 12px; background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center; transition: background-image 0.5s ease-in-out; box-shadow: 0 20px 40px rgba(0,0,0,0.8); border: 1px solid #222;}
@@ -150,6 +150,16 @@
     .galeria-item:hover .galeria-overlay { opacity: 1; }
     .galeria-overlay h4 { margin: 0; color: white; font-size: 1.1rem; letter-spacing: 1px; }
 
+    /* RESTAURADO: INSTAGRAM */
+    .ig-header { margin-bottom: 30px; text-align: center; }
+    .ig-header h3 { font-weight: 300; font-size: 1.5rem; margin: 0; }
+    .ig-header p { color: var(--cucine-red); font-weight: 700; letter-spacing: 1px; margin-top: 5px; }
+    .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 1000px; margin: 0 auto; }
+    @media (max-width: 768px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ig-post { position: relative; padding-bottom: 100%; background-size: cover; background-position: center; border-radius: 4px; overflow: hidden; cursor: pointer; }
+    .ig-post::after { content: '🤍'; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; font-size: 2rem; opacity: 0; transition: opacity 0.3s ease; }
+    .ig-post:hover::after { opacity: 1; }
+
     /* SUCURSALES */
     .sucursales-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
     .sucursal-card { background: #111; border: 1px solid #222; border-radius: 8px; padding: 30px 20px; text-align: left; transition: border-color 0.3s ease; }
@@ -192,7 +202,7 @@
     .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
     @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-    /* FOOTER AVANZADO */
+    /* FOOTER */
     footer { background: #000; padding: 60px 20px 20px 20px; border-top: 1px solid #1a1a1a; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: left; border-bottom: 1px solid #222; padding-bottom: 40px; margin-bottom: 20px;}
     .footer-col h4 { color: white; font-size: 1.1rem; margin-bottom: 20px; letter-spacing: 1px; }
@@ -206,7 +216,7 @@
 </head>
 <body>
 
-  <!-- PANTALLA DE CARGA (PRELOADER) -->
+  <!-- PANTALLA DE CARGA -->
   <div id="preloader">
     <div class="loader-logo">art<span>cucine</span></div>
   </div>
@@ -262,18 +272,15 @@
     </div>
   </section>
 
-  <!-- CONFIGURADOR INTERACTIVO (CORREGIDO) -->
+  <!-- CONFIGURADOR INTERACTIVO -->
   <section class="configurator-section reveal">
     <div class="configurator-wrapper">
       <div class="config-controls">
         <h3>Explora tus <strong>Acabados</strong></h3>
         <p>Experimenta con nuestras texturas. Selecciona un acabado para ver cómo transforma el espacio antes de tomar una decisión.</p>
         <div class="swatch-group">
-          <!-- Botón Oscuro -->
           <div class="swatch swatch-dark active" onclick="changeColor('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop', this)" title="Supermate Oscuro"></div>
-          <!-- Botón Madera -->
           <div class="swatch swatch-wood" onclick="changeColor('https://images.unsplash.com/photo-1556909211-36987daf7b4d?q=80&w=800&auto=format&fit=crop', this)" title="Clásico Maderado"></div>
-          <!-- Botón Blanco -->
           <div class="swatch swatch-white" onclick="changeColor('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=800&auto=format&fit=crop', this)" title="Blanco Reflejos"></div>
         </div>
       </div>
@@ -334,8 +341,22 @@
     </div>
   </section>
 
+  <!-- RESTAURADO: INSTAGRAM -->
+  <section class="section bg-light reveal">
+    <div class="ig-header">
+      <h3>Únete a nuestros +40k seguidores</h3>
+      <p>@artcucine</p>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=400&auto=format&fit=crop');"></div>
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop');"></div>
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400&auto=format&fit=crop');"></div>
+      <div class="ig-post" style="background-image: url('https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=80&w=400&auto=format&fit=crop');"></div>
+    </div>
+  </section>
+
   <!-- SUCURSALES -->
-  <section class="section bg-light reveal" id="sucursales">
+  <section class="section bg-dark reveal" id="sucursales">
     <h3 class="section-title">Nuestras <strong>Sucursales</strong></h3>
     <div class="sucursales-grid">
       <div class="sucursal-card"><h4>Caracas</h4><p><strong>WhatsApp:</strong> +58 412-1551123</p><p><strong>Ubicación:</strong> C.C. Automercado, PB.</p></div>
@@ -346,7 +367,7 @@
   </section>
 
   <!-- TESTIMONIOS -->
-  <section class="section bg-dark reveal">
+  <section class="section bg-light reveal">
     <h3 class="section-title">Experiencia <strong>Premium</strong></h3>
     <div class="testimonio-grid">
       <div class="testimonio-card">
@@ -369,7 +390,7 @@
   </section>
 
   <!-- ALIADOS -->
-  <section class="section bg-light reveal">
+  <section class="section bg-dark reveal">
     <h3 class="section-title" style="font-size: 1.5rem; color: #888; font-weight: 300;">NUESTROS ALIADOS COMERCIALES</h3>
     <div class="aliados-grid">
       <div class="aliado-logo" style="text-transform: lowercase; font-style: italic;">blum</div>
@@ -379,7 +400,7 @@
   </section>
 
   <!-- PREGUNTAS FRECUENTES -->
-  <section class="section bg-dark reveal">
+  <section class="section bg-light reveal">
     <h3 class="section-title">Preguntas <strong>Frecuentes</strong></h3>
     <div class="faq-grid">
       <div class="faq-card"><h4>¿Qué garantía ofrecen?</h4><p>5 años de garantía en herrajes y materiales contra defectos de fábrica.</p></div>
@@ -389,7 +410,7 @@
   </section>
 
   <!-- CONTACTO -->
-  <section class="section bg-light reveal" id="contacto">
+  <section class="section bg-dark reveal" id="contacto">
     <h3 class="section-title">Comienza tu <strong>Proyecto</strong></h3>
     <div class="contacto-container">
       <form>
@@ -429,7 +450,7 @@
     <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z" /></svg>
   </a>
 
-  <!-- CÓDIGO JAVASCRIPT (EL CEREBRO DE ANIMACIONES) -->
+  <!-- JAVASCRIPT -->
   <script>
     window.addEventListener('load', function() {
       setTimeout(function() { document.getElementById('preloader').classList.add('hide'); }, 500); 
@@ -450,7 +471,6 @@
     });
     menuItems.forEach(item => { item.addEventListener('click', function() { navLinks.classList.remove('active'); menuBtn.innerHTML = '☰'; }); });
 
-    // JS CORREGIDO PARA EL CONFIGURADOR DE COLORES
     function changeColor(imgUrl, element) {
       document.getElementById('config-view').style.backgroundImage = "url('" + imgUrl + "')";
       var swatches = document.querySelectorAll('.swatch');
